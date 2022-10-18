@@ -1,3 +1,4 @@
 dependencies {
+    implementation("com.my.tracker:mytracker-sdk:3.0.9")
     implementation("com.appodeal.ads.sdk.networks:my_target:2.11.1.22")
 }
