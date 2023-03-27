@@ -6,6 +6,7 @@ local metadata =
 		staticLibs = { 'APDMyTargetAdapter', },
 		frameworks = { 'MyTargetSDK', },
 		frameworksOptional = {},
+		usesSwift =true,
 	},
 }
 

@@ -1,6 +1,6 @@
 //
 //  MTRGInstreamAd.h
-//  myTargetSDK 5.15.0
+//  myTargetSDK 5.17.2
 //
 // Created by Timur on 5/4/18.
 // Copyright (c) 2018 Mail.Ru Group. All rights reserved.
@@ -10,8 +10,11 @@
 #import <MyTargetSDK/MTRGBaseAd.h>
 
 @protocol MTRGInstreamAdPlayer;
+@protocol MTRGMenuFactory;
 @class MTRGInstreamAd;
 @class AVPlayer;
+@class MTRGInstreamAdCompanionBanner;
+@class MTRGShoppableAdsItem;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -48,12 +51,42 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  @discussion CTA text.
  */
-@property(nonatomic, readonly, copy, nullable) NSString *ctaText;
+@property(nonatomic, readonly) NSString *ctaText;
 
 /**
  @discussion The banner identifier.
  */
 @property(nonatomic, readonly) NSString *bannerId;
+
+/**
+ @discussion If banner has a companion html page.
+ */
+@property(nonatomic, readonly) BOOL hasShoppable;
+
+/**
+ @discussion Advertising label.
+ */
+@property(nonatomic, readonly) NSString *advertisingLabel;
+
+/**
+ @discussion AdChoices image.
+ */
+@property(nonatomic, readonly, nullable) UIImage *adChoicesImage;
+
+/**
+ @discussion If banner has AdChoices.
+ */
+@property(nonatomic, readonly) BOOL hasAdChoices;
+
+/**
+ @discussion Array of Instances of banner's companions(MTRGInstreamAdCompanionBanner).
+ */
+@property(nonatomic, readonly) NSArray<MTRGInstreamAdCompanionBanner *> *companionBanners;
+
+/**
+ @discussion Array of Instances of shoppable cards (MTRGShoppableAdsItem).
+ */
+@property(nonatomic, readonly, nullable) NSArray<MTRGShoppableAdsItem *> *shoppableAdsItems;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -144,6 +177,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)onLeaveApplicationWithInstreamAd:(MTRGInstreamAd *)instreamAd;
 
+/**
+ @discussion The method is called by clicking in the adChoices menu on certain items, such as "Complain", so the content should be hidden. You should call skip() method.
+
+ @param banner Current instream ad banner.
+ @param instreamAd Current instream ad.
+ */
+- (void)onBannerShouldClose:(MTRGInstreamAdBanner *)banner instreamAd:(MTRGInstreamAd *)instreamAd;
+
 @end
 
 /**
@@ -197,6 +238,16 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic) float volume;
 
 /**
+ @discussion View for companion html page.
+ */
+@property(nonatomic, readonly, nullable) UIView *shoppableView;
+
+/**
+ @discussion Determines ad shows shoppable view or not.
+ */
+@property(nonatomic) BOOL shoppablePresented;
+
+/**
  @discussion Static constructor. Creates instream ad with slot identifier.
  
  @param slotId Slot identifier.
@@ -204,6 +255,16 @@ NS_ASSUME_NONNULL_BEGIN
  @return Instance of the class.
  */
 + (instancetype)instreamAdWithSlotId:(NSUInteger)slotId;
+
+/**
+ @discussion Static constructor. Creates instream ad with slot identifier and menu factory.
+
+ @param slotId Slot identifier.
+ @param menuFactory Menu factory.
+
+ @return Instance of the class.
+ */
++ (instancetype)instreamAdWithSlotId:(NSUInteger)slotId menuFactory:(id<MTRGMenuFactory>)menuFactory;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -215,6 +276,16 @@ NS_ASSUME_NONNULL_BEGIN
  @return Instance of the class.
  */
 - (instancetype)initWithSlotId:(NSUInteger)slotId;
+
+/**
+ @discussion Creates instream ad with slot identifier and menu factory.
+
+ @param slotId Slot identifier.
+ @param menuFactory Menu factory.
+
+ @return Instance of the class.
+ */
+- (instancetype)initWithSlotId:(NSUInteger)slotId menuFactory:(id<MTRGMenuFactory>)menuFactory;
 
 /**
  @discussion Loads the ad.
@@ -252,6 +323,29 @@ NS_ASSUME_NONNULL_BEGIN
  @param controller Instance of UIViewController.
  */
 - (void)handleClickWithController:(UIViewController *)controller;
+
+/**
+ @discussion Method to handle companion click.
+
+ @param companionBanner The companion for the ad.
+ @param controller Used UIViewController.
+ */
+- (void)handleCompanionClick:(MTRGInstreamAdCompanionBanner *)companionBanner withController:(UIViewController *)controller;
+
+/**
+ @discussion Method to handle companion show.
+
+ @param companionBanner The companion for the ad.
+ */
+- (void)handleCompanionShow:(MTRGInstreamAdCompanionBanner *)companionBanner;
+
+/**
+ @discussion Method to handle adChoices click.
+
+ @param viewController Used UIViewController.
+ @param sourceView UIView for iPad popover.
+ */
+- (void)handleAdChoicesClickWithController:(UIViewController *)viewController sourceView:(nullable UIView *)sourceView NS_SWIFT_NAME(handleAdChoicesClick(with:sourceView:));
 
 /**
  @discussion Starts preroll.
@@ -304,6 +398,20 @@ NS_ASSUME_NONNULL_BEGIN
  @param videoDuration Duration of the video ad.
  */
 - (void)configureMidpointsForVideoDuration:(NSTimeInterval)videoDuration;
+
+/**
+ @discussion Method to handle shoppable item show.
+
+ @param identifier Shoppable card id
+ */
+- (void)shoppableAdsItemShowForIdentifier:(nonnull NSString *)identifier;
+
+/**
+ @discussion Method to handle shoppable item click.
+
+ @param identifier Shoppable card id
+ */
+- (void)shoppableAdsItemClickForIdentifier:(nonnull NSString *)identifier;
 
 @end
 

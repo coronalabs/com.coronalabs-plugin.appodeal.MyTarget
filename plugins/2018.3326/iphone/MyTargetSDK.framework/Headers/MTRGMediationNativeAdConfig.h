@@ -1,6 +1,6 @@
 //
 //  MTRGMediationNativeAdConfig.h
-//  myTargetSDK 5.15.0
+//  myTargetSDK 5.17.2
 //
 // Copyright (c) 2019 Mail.Ru Group. All rights reserved.
 //
@@ -27,6 +27,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, readonly) MTRGAdChoicesPlacement adChoicesPlacement;
 
 /**
+ @discussion Menu factory for drawing adChoices menu manually. See MTRGMenuFactory protocol.
+ */
+@property(nonatomic, readonly) id <MTRGMenuFactory> adChoicesMenuFactory;
+
+/**
  @discussion Static constructor. Creates instance of the class.
  
  @param placementId Placement identifier.
@@ -37,6 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
  @param privacy Configuration of privacy for the user.
  @param cachePolicy Cache policy for the native ad.
  @param adChoicesPlacement Placement for ad choices.
+ @param adChoicesMenuFactory Menu factory.
  
  @return Instance of the class.
  */
@@ -47,7 +53,9 @@ NS_ASSUME_NONNULL_BEGIN
 							   gender:(MTRGGender)gender
 							  privacy:(MTRGPrivacy *)privacy
 						  cachePolicy:(MTRGCachePolicy)cachePolicy
-				   adChoicesPlacement:(MTRGAdChoicesPlacement)adChoicesPlacement;
+				   adChoicesPlacement:(MTRGAdChoicesPlacement)adChoicesPlacement
+					  adNetworkConfig:(nullable id <MTRGAdNetworkConfigProtocol>)adNetworkConfig
+				 adChoicesMenuFactory:(id <MTRGMenuFactory>)adChoicesMenuFactory;
 
 @end
 
