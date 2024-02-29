@@ -1,6 +1,6 @@
 //
 //  MTRGInstreamAd.h
-//  myTargetSDK 5.17.2
+//  myTargetSDK 5.20.1
 //
 // Created by Timur on 5/4/18.
 // Copyright (c) 2018 Mail.Ru Group. All rights reserved.
@@ -15,6 +15,8 @@
 @class AVPlayer;
 @class MTRGInstreamAdCompanionBanner;
 @class MTRGShoppableAdsItem;
+@class MTRGInstreamAdVideoMotionBanner;
+@protocol MTRGInstreamAdVideoMotionPlayer;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -22,6 +24,11 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion Instream ad banner.
  */
 @interface MTRGInstreamAdBanner : NSObject
+
+/**
+ @discussion The bundle identifier.
+ */
+@property(nonatomic, readonly, nullable) NSString *bundleId;
 
 /**
  @discussion Duration of showing the banner.
@@ -105,14 +112,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onLoadWithInstreamAd:(MTRGInstreamAd *)instreamAd;
 
 /**
- @discussion Calls if there is no ad. Required.
- 
+ @discussion Calls if there is no ad.
+
+ @param error An error code/description.
+ @param instreamAd Current instream ad.
+ */
+- (void)onLoadFailedWithError:(NSError *)error instreamAd:(MTRGInstreamAd *)instreamAd NS_SWIFT_NAME(onLoadFailed(error:instreamAd:));
+
+@optional
+
+/**
+ @discussion Calls if there is no ad.
+
  @param reason Reason why there is no ad.
  @param instreamAd Current instream ad.
  */
-- (void)onNoAdWithReason:(NSString *)reason instreamAd:(MTRGInstreamAd *)instreamAd;
-
-@optional
+- (void)onNoAdWithReason:(NSString *)reason instreamAd:(MTRGInstreamAd *)instreamAd __attribute__((deprecated("use onLoadFailed method instead.")));
 
 /**
  @discussion Calls on error for the ad.
@@ -131,12 +146,28 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onBannerStart:(MTRGInstreamAdBanner *)banner instreamAd:(MTRGInstreamAd *)instreamAd;
 
 /**
+ @discussion Calls on banner's start.
+
+ @param banner Current instream ad video motion banner.
+ @param instreamAd Current instream ad.
+ */
+- (void)onVideoMotionBannerStart:(MTRGInstreamAdVideoMotionBanner *)banner instreamAd:(MTRGInstreamAd *)instreamAd;
+
+/**
  @discussion Calls on banner's complete.
  
  @param banner Current instream ad banner.
  @param instreamAd Current instream ad.
  */
 - (void)onBannerComplete:(MTRGInstreamAdBanner *)banner instreamAd:(MTRGInstreamAd *)instreamAd;
+
+/**
+ @discussion Calls on banner's complete.
+
+ @param banner Current instream ad video motion banner.
+ @param instreamAd Current instream ad.
+ */
+- (void)onVideoMotionBannerComplete:(MTRGInstreamAdVideoMotionBanner *)banner instreamAd:(MTRGInstreamAd *)instreamAd;
 
 /**
  @discussion Calls on banner's time left change.
@@ -185,6 +216,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)onBannerShouldClose:(MTRGInstreamAdBanner *)banner instreamAd:(MTRGInstreamAd *)instreamAd;
 
+/**
+ @discussion The method is called by clicking in the adChoices menu on certain items, such as "Complain", so the content should be hidden. You should call skip() method.
+
+ @param banner Current instream ad video motion banner.
+ @param instreamAd Current instream ad.
+ */
+- (void)onVideoMotionShouldClose:(MTRGInstreamAdVideoMotionBanner *)banner instreamAd:(MTRGInstreamAd *)instreamAd;
+
 @end
 
 /**
@@ -201,6 +240,11 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion Player for the ad. Conforms MTRGInstreamAdPlayer protocol.
  */
 @property(nonatomic, nullable) id <MTRGInstreamAdPlayer> player;
+
+/**
+ @discussion Player for VideoMotion banner. Conforms MTRGVideoMotionPlayer protocol.
+ */
+@property(nonatomic, nullable) id <MTRGInstreamAdVideoMotionPlayer> videoMotionPlayer;
 
 /**
  @discussion Array of midpoint for the ad.

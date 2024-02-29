@@ -1,6 +1,6 @@
 //
 //  MTRGAdView.h
-//  myTargetSDK 5.17.2
+//  myTargetSDK 5.20.1
 //
 // Created by Timur on 3/22/18.
 // Copyright (c) 2018 Mail.Ru Group. All rights reserved.
@@ -28,14 +28,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onLoadWithAdView:(MTRGAdView *)adView;
 
 /**
- @discussion Calls when there is no ad for ad view. Required.
- 
+ @discussion Calls if there is no ad.
+
+ @param error An error code/description.
+ @param adView Current ad view.
+ */
+- (void)onLoadFailedWithError:(NSError *)error adView:(MTRGAdView *)adView NS_SWIFT_NAME(onLoadFailed(error:adView:));
+
+@optional
+
+/**
+ @discussion Calls when there is no ad for ad view.
+
  @param reason String with a reason.
  @param adView Current ad view.
  */
-- (void)onNoAdWithReason:(NSString *)reason adView:(MTRGAdView *)adView;
-
-@optional
+- (void)onNoAdWithReason:(NSString *)reason adView:(MTRGAdView *)adView __attribute__((deprecated("use onLoadFailed method instead.")));
 
 /**
  @discussion Calls on click.
@@ -142,6 +150,14 @@ NS_ASSUME_NONNULL_BEGIN
  @return Instance of MTRGAdView.
  */
 + (instancetype)adViewWithSlotId:(NSUInteger)slotId shouldRefreshAd:(BOOL)shouldRefreshAd;
+
++ (instancetype)new NS_UNAVAILABLE;
+
+- (instancetype)init NS_UNAVAILABLE;
+
+- (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
+
+- (nullable instancetype)initWithCoder:(NSCoder *)coder NS_UNAVAILABLE;
 
 /**
  @discussion Load the view.
