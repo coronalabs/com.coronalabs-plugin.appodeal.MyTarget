@@ -1,6 +1,6 @@
 //
 //  MTRGMediationInterstitialAdAdapter.h
-//  myTargetSDK 5.20.1
+//  myTargetSDK 5.21.8
 //
 // Copyright (c) 2019 Mail.Ru Group. All rights reserved.
 //
@@ -8,7 +8,7 @@
 #import <UIKit/UIKit.h>
 #import <MyTargetSDK/MTRGMediationAdapter.h>
 
-@class MTRGMediationAdConfig;
+@protocol MTRGMediationAdConfigProtocol;
 @protocol MTRGMediationInterstitialAdAdapter;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -63,6 +63,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onDisplayWithAdapter:(id <MTRGMediationInterstitialAdAdapter>)adapter;
 
 /**
+ @discussion Calls when ad failed to show by adapter.
+
+ @param adapter Current adapter.
+ */
+- (void)onFailedToShowWithAdapter:(id <MTRGMediationInterstitialAdAdapter>)adapter;
+
+/**
  @discussion Calls on leave the application while ad is showing.
  
  @param adapter Current adapter.
@@ -97,7 +104,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param mediationAdConfig Configuration for the adapter.
  */
-- (void)loadWithMediationAdConfig:(MTRGMediationAdConfig *)mediationAdConfig;
+- (void)loadWithMediationAdConfig:(id <MTRGMediationAdConfigProtocol>)mediationAdConfig NS_SWIFT_NAME(load(with:));
 
 /**
  @discussion Show on the controller.

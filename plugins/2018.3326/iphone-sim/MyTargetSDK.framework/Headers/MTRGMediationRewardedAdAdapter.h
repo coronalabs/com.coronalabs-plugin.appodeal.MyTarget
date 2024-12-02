@@ -1,6 +1,6 @@
 //
 //  MTRGMediationRewardedAdAdapter.h
-//  myTargetSDK 5.20.1
+//  myTargetSDK 5.21.8
 //
 //  Created by Andrey Seredkin on 13.08.2020.
 //  Copyright © 2020 Mail.ru Group. All rights reserved.
@@ -10,7 +10,7 @@
 #import <MyTargetSDK/MTRGMediationAdapter.h>
 
 @class MTRGReward;
-@class MTRGMediationAdConfig;
+@protocol MTRGMediationAdConfigProtocol;
 @protocol MTRGMediationRewardedAdAdapter;
 
 NS_ASSUME_NONNULL_BEGIN
@@ -66,6 +66,13 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onDisplayWithAdapter:(id <MTRGMediationRewardedAdAdapter>)adapter;
 
 /**
+ @discussion Calls when ad failed to show by adapter.
+
+ @param adapter Current adapter.
+ */
+- (void)onFailedToShowWithAdapter:(id <MTRGMediationRewardedAdAdapter>)adapter;
+
+/**
  @discussion Calls on leave the application while ad is showing.
  
  @param adapter Current adapter.
@@ -100,7 +107,7 @@ NS_ASSUME_NONNULL_BEGIN
  
  @param mediationAdConfig Configuration of the mediation ad.
  */
-- (void)loadWithMediationAdConfig:(MTRGMediationAdConfig *)mediationAdConfig;
+- (void)loadWithMediationAdConfig:(id <MTRGMediationAdConfigProtocol>)mediationAdConfig NS_SWIFT_NAME(load(with:));
 
 /**
  @discussion Show ad with controller.

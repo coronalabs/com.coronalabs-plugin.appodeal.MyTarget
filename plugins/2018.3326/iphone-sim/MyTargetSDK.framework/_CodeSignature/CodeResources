@@ -4,10 +4,6 @@
 <dict>
 	<key>files</key>
 	<dict>
-		<key>Frameworks/libAppVerificationLibrary.a</key>
-		<data>
-		9C/VDK+qh+wjs0LjlhZCCjrXM1U=
-		</data>
 		<key>Headers/MTRGAdChoicesPlacement.h</key>
 		<data>
 		NZmaKY8mroKcwOyFtq8CKSukAAo=
@@ -70,7 +66,7 @@
 		</data>
 		<key>Headers/MTRGInstreamAd.h</key>
 		<data>
-		CDNec+KI28ckQjDkUzPWFSO7Hpg=
+		aZ+ilkp1NxDAbwyx83oc33Fx/uM=
 		</data>
 		<key>Headers/MTRGInstreamAdCompanionBanner.h</key>
 		<data>
@@ -82,7 +78,7 @@
 		</data>
 		<key>Headers/MTRGInstreamAudioAd.h</key>
 		<data>
-		m16kNNv54pRF2nu+JGPcnmVk7eo=
+		c/8m2owkSGWc2yWxAA7csULSV/g=
 		</data>
 		<key>Headers/MTRGInstreamAudioAdPlayer.h</key>
 		<data>
@@ -94,7 +90,7 @@
 		</data>
 		<key>Headers/MTRGInterstitialAd.h</key>
 		<data>
-		733cLxLMH/SLi+pDcFsr4YNmBiE=
+		GlBvgovjf7tg0S53nWP8TQIefzA=
 		</data>
 		<key>Headers/MTRGMediaAdView.h</key>
 		<data>
@@ -106,7 +102,11 @@
 		</data>
 		<key>Headers/MTRGMediationAdConfig.h</key>
 		<data>
-		awUXJIk5R6gV0AWwZnGsYiKTiPE=
+		hLJxnVX+4ZrWOXNbNyQDPv1gqpc=
+		</data>
+		<key>Headers/MTRGMediationAdConfigProtocol.h</key>
+		<data>
+		AXGANMOjRz1Vp22IMdgshu+NKPs=
 		</data>
 		<key>Headers/MTRGMediationAdapter.h</key>
 		<data>
@@ -114,11 +114,11 @@
 		</data>
 		<key>Headers/MTRGMediationInterstitialAdAdapter.h</key>
 		<data>
-		hvybnGyRBsKCgl44zqpQQFFJy9c=
+		TyYaO+u5UVGS6lASyTMJ1zROd8A=
 		</data>
 		<key>Headers/MTRGMediationNativeAdAdapter.h</key>
 		<data>
-		fUd8TlmNQg8ONZnR1UGaRMJ1ewc=
+		TXHUmoOMQGnmp17SA6itgmwm7Js=
 		</data>
 		<key>Headers/MTRGMediationNativeAdBanner.h</key>
 		<data>
@@ -130,15 +130,19 @@
 		</data>
 		<key>Headers/MTRGMediationNativeAdConfig.h</key>
 		<data>
-		mYIcHe1bEnWSNOuKgM7FBzpC6Ek=
+		ukJobW/c8sOHqAXcHnxcOGRfyoE=
+		</data>
+		<key>Headers/MTRGMediationNativeAdConfigProtocol.h</key>
+		<data>
+		FeiNDVQ9i9xk7i+2AQ+1UzlVIME=
 		</data>
 		<key>Headers/MTRGMediationNativeAdMediaDelegate.h</key>
 		<data>
-		dX/Rp8vx3Tn9qkdp8Bgr085hAAo=
+		XaHliMmEcOdNxsrfvs5MOwfEihw=
 		</data>
 		<key>Headers/MTRGMediationNativeBannerAdAdapter.h</key>
 		<data>
-		u3VoIjqPcsElw64TOoFXql8Woys=
+		AawCtAZQWqOps1mEQ5087r1hM94=
 		</data>
 		<key>Headers/MTRGMediationNativeBannerAdChoicesOptionDelegate.h</key>
 		<data>
@@ -146,35 +150,23 @@
 		</data>
 		<key>Headers/MTRGMediationNativeBannerAdConfig.h</key>
 		<data>
-		amWaaTO7S5KyvOSkCrs5Y8mqNfA=
+		COaKHRdMFN76VasDGYwKSP7ZgC8=
 		</data>
 		<key>Headers/MTRGMediationNativeBannerAdMediaDelegate.h</key>
 		<data>
-		VXP6PBfJ/hohydtKcBn8VO3d2ns=
+		aU7+rKLeJcYYtKilw18xBJSIAfw=
 		</data>
 		<key>Headers/MTRGMediationRewardedAdAdapter.h</key>
 		<data>
-		i6wgNnyXToGQ5jxviB3RPXwbz7c=
+		XbHV0/VPzByvfUb1DpV6XBjcilI=
 		</data>
 		<key>Headers/MTRGMediationStandardAdAdapter.h</key>
 		<data>
-		tmY6f/vvGPZhs6Lt94JPhYv0k2A=
-		</data>
-		<key>Headers/MTRGMenu.h</key>
-		<data>
-		g9cumFiHwwOKZVAm2KZpILtssYY=
-		</data>
-		<key>Headers/MTRGMenuAction.h</key>
-		<data>
-		iSU+NcEdIeQYH5tkc18SmYTBPi0=
-		</data>
-		<key>Headers/MTRGMenuFactory.h</key>
-		<data>
-		tUd3lQA3SobaKvM/evYzXXVFD24=
+		DttOzKYpuBJJpBrdq5gtFipFXaI=
 		</data>
 		<key>Headers/MTRGNativeAd.h</key>
 		<data>
-		HCoUau2TzD0dN+g4zzJv7C/N+Zw=
+		GX+eBDKPfxnLoy76cAsUbpYsTc0=
 		</data>
 		<key>Headers/MTRGNativeAdChoicesOptionDelegate.h</key>
 		<data>
@@ -182,11 +174,11 @@
 		</data>
 		<key>Headers/MTRGNativeAdContainer.h</key>
 		<data>
-		Q5DePxCmqroGvJDM5Cc5L4rQTBs=
+		SFGHhvgmEtWESIRExTujZ9oAuxI=
 		</data>
 		<key>Headers/MTRGNativeAdLoader.h</key>
 		<data>
-		U9iJfOCYkl4niND9l52tUSc4Bkg=
+		A7Ol7duygNJXlFoWwY7jGqKaa/g=
 		</data>
 		<key>Headers/MTRGNativeAdProtocol.h</key>
 		<data>
@@ -210,11 +202,11 @@
 		</data>
 		<key>Headers/MTRGNativeBanner.h</key>
 		<data>
-		+9PYbZYBJm3NDfSe6XWWBOxyX1k=
+		5gOrsYaiu+CX0nMnySR1UNSs/Pc=
 		</data>
 		<key>Headers/MTRGNativeBannerAd.h</key>
 		<data>
-		nWU20XvcZ6GnzgMdKRzEzfLql0o=
+		TyWU4zMz2Z7NXT1Vxgse/09NeBU=
 		</data>
 		<key>Headers/MTRGNativeBannerAdChoicesOptionDelegate.h</key>
 		<data>
@@ -222,7 +214,7 @@
 		</data>
 		<key>Headers/MTRGNativeBannerAdLoader.h</key>
 		<data>
-		QZXlk/1DIZDIHnGUzZGXp7zT3Fc=
+		Zm7/sbTdUUyQiwAjXyYbIEJocf0=
 		</data>
 		<key>Headers/MTRGNativeBannerAdView.h</key>
 		<data>
@@ -230,7 +222,7 @@
 		</data>
 		<key>Headers/MTRGNativeCardAdView.h</key>
 		<data>
-		zDBITvIPauC6zS4PJYazKfzABs0=
+		DGE9452HroVyhtOd2V0/F6GSKnM=
 		</data>
 		<key>Headers/MTRGNativePromoBanner.h</key>
 		<data>
@@ -250,7 +242,11 @@
 		</data>
 		<key>Headers/MTRGPrivacy.h</key>
 		<data>
-		bLMMKv7/VrPsqtz4ZPgsKlKzY2g=
+		3lPLWuK87exgdwg8v1nAFDE3mzc=
+		</data>
+		<key>Headers/MTRGPrivacyProtocol.h</key>
+		<data>
+		luH2kvbmwTmZKxz/I/eM1NbcBuw=
 		</data>
 		<key>Headers/MTRGPromoCardCollectionView.h</key>
 		<data>
@@ -258,11 +254,11 @@
 		</data>
 		<key>Headers/MTRGPromoCardSliderProtocol.h</key>
 		<data>
-		cS4HUt2nxOOahKzzk5VifIQBTeA=
+		VgfRsZWVQFHU00OaUBAIY7bgL6I=
 		</data>
 		<key>Headers/MTRGPromoCardViewProtocol.h</key>
 		<data>
-		JfrIUFSyUXLS0mulgSQE9si8cgs=
+		9itOh+bgx90G1WrWgkVKjktbGrs=
 		</data>
 		<key>Headers/MTRGReward.h</key>
 		<data>
@@ -270,7 +266,7 @@
 		</data>
 		<key>Headers/MTRGRewardedAd.h</key>
 		<data>
-		AFOZ9OcZJ0j4feBAUwQOBjETr/A=
+		V4EsL7JpiZvHGS39+XDT2uLJfQk=
 		</data>
 		<key>Headers/MTRGShareButtonData.h</key>
 		<data>
@@ -290,59 +286,63 @@
 		</data>
 		<key>Headers/MyTargetSDK-Swift.h</key>
 		<data>
-		bIIV1S6Re9f+o9JGJWAcdMXTcwE=
+		EOJ5m246mwpDrpkA+ryvQS2k1Cs=
 		</data>
 		<key>Headers/MyTargetSDK.h</key>
 		<data>
-		bnsX6DyPnXdRzLkFf8yRoxCqUgE=
+		nU3/1ui2XHL2veJhrBpPf5BIbII=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		LBtEA5oI/HJhod5WQAgCN/RdCGs=
+		fsAXEOMeyxL0OEf+Gu5NJ0cGF8c=
 		</data>
 		<key>Modules/MyTargetSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<data>
-		rlKkdRW9q9lvYDeIyudZKgUSm3M=
+		/pd0WdwM8dqt+CvF3VGw7WvoJV8=
 		</data>
 		<key>Modules/MyTargetSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		0v4ADp3dXdCweEEmugucJkm6/Q8=
+		dfk92AKykii/mCJIGPukl0gGtEQ=
 		</data>
 		<key>Modules/MyTargetSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		znEyIABfrJob2XBiFyB6x6BdoqM=
+		FJyLLloxrnbrFT9Hesk2+Yg2NtM=
 		</data>
 		<key>Modules/MyTargetSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		0v4ADp3dXdCweEEmugucJkm6/Q8=
+		dfk92AKykii/mCJIGPukl0gGtEQ=
 		</data>
 		<key>Modules/MyTargetSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		N3DJK8MOGtCQPzXmDULG/NQo1fA=
+		uZXY+XP6thCVi/SEcxLvnkL5OPI=
 		</data>
 		<key>Modules/MyTargetSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<data>
-		rlKkdRW9q9lvYDeIyudZKgUSm3M=
+		/pd0WdwM8dqt+CvF3VGw7WvoJV8=
 		</data>
 		<key>Modules/MyTargetSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<data>
-		QeZSoi2DNHxM7ewvvd7l0c3SAsE=
+		gOBDMU8T1bMmbTEQZYvbV97umZ4=
 		</data>
 		<key>Modules/MyTargetSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		IW4dUN1be6jsH22UFBepbL6ct04=
+		TxlmWZUTh23jvobbh3MqDhkT0nU=
 		</data>
 		<key>Modules/MyTargetSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		QeZSoi2DNHxM7ewvvd7l0c3SAsE=
+		gOBDMU8T1bMmbTEQZYvbV97umZ4=
 		</data>
 		<key>Modules/MyTargetSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		gmmgK1HhE8ukaR1kQZiwR7hFdIg=
+		OBOUGa/CepeRGuAQHQ1a7/fEjDw=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		k0FSjgYUimM0vgRlUVIlkJxYYZU=
+		B3HtGhJaZciFEPm25zZF1lEZV5c=
+		</data>
+		<key>PrivacyInfo.xcprivacy</key>
+		<data>
+		SIjlq4QVhTfPwUMNfyqmsLzCcr0=
 		</data>
 		<key>PrivateHeaders/MTRGAutoInit.h</key>
 		<data>
@@ -351,17 +351,6 @@
 	</dict>
 	<key>files2</key>
 	<dict>
-		<key>Frameworks/libAppVerificationLibrary.a</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			9C/VDK+qh+wjs0LjlhZCCjrXM1U=
-			</data>
-			<key>hash2</key>
-			<data>
-			kxpWckt1Pq/aa3zgPN1UwQzEqSvfYUYY4p20GXM5yIw=
-			</data>
-		</dict>
 		<key>Headers/MTRGAdChoicesPlacement.h</key>
 		<dict>
 			<key>hash</key>
@@ -531,11 +520,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			CDNec+KI28ckQjDkUzPWFSO7Hpg=
+			aZ+ilkp1NxDAbwyx83oc33Fx/uM=
 			</data>
 			<key>hash2</key>
 			<data>
-			YEglrzow5kcbMArMmLb3rmVEylPP/u0XWW+a+gSWUf8=
+			NQg5gv8uuOuvmBfggrfAzClD81YvfQJpdRwkOR2WugM=
 			</data>
 		</dict>
 		<key>Headers/MTRGInstreamAdCompanionBanner.h</key>
@@ -564,11 +553,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			m16kNNv54pRF2nu+JGPcnmVk7eo=
+			c/8m2owkSGWc2yWxAA7csULSV/g=
 			</data>
 			<key>hash2</key>
 			<data>
-			aQwF2J7PWEHKw8h22W8RarT7KgFtSMlXofqaYQ05Cic=
+			CsFbHr9fqzfKnwNPle/j2qNX6A9ZRqi+/9BwWosen8A=
 			</data>
 		</dict>
 		<key>Headers/MTRGInstreamAudioAdPlayer.h</key>
@@ -597,11 +586,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			733cLxLMH/SLi+pDcFsr4YNmBiE=
+			GlBvgovjf7tg0S53nWP8TQIefzA=
 			</data>
 			<key>hash2</key>
 			<data>
-			bD2SApbP8zNdQWUFN47dOjS3PjlANh7ZMFZwPeZj9Uc=
+			zkAbZ9WAilOllhcmR0kdbeATN7H+QHW0w79VD54sFqo=
 			</data>
 		</dict>
 		<key>Headers/MTRGMediaAdView.h</key>
@@ -630,11 +619,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			awUXJIk5R6gV0AWwZnGsYiKTiPE=
+			hLJxnVX+4ZrWOXNbNyQDPv1gqpc=
 			</data>
 			<key>hash2</key>
 			<data>
-			zyFb1p+tpm+AhkKljd4kZRezJGV+CG19nSSmJ1iW7TQ=
+			B1+G6Db0WHH+kz2ERsQOCnOhC3w4opSDpTu5XSWWn6Y=
+			</data>
+		</dict>
+		<key>Headers/MTRGMediationAdConfigProtocol.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			AXGANMOjRz1Vp22IMdgshu+NKPs=
+			</data>
+			<key>hash2</key>
+			<data>
+			CqXLtLQw3bNbuVqx+ADMf0HaeFpvckbsEedBGFmHTGA=
 			</data>
 		</dict>
 		<key>Headers/MTRGMediationAdapter.h</key>
@@ -652,22 +652,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			hvybnGyRBsKCgl44zqpQQFFJy9c=
+			TyYaO+u5UVGS6lASyTMJ1zROd8A=
 			</data>
 			<key>hash2</key>
 			<data>
-			HkNlGh8j/NW56ZAZOb/288eQlaNLGl2cq7umW8ytSt8=
+			hPoVWqKybnTKTBCf2Kb8EOuBkdQTNozrkavFVDJET3s=
 			</data>
 		</dict>
 		<key>Headers/MTRGMediationNativeAdAdapter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			fUd8TlmNQg8ONZnR1UGaRMJ1ewc=
+			TXHUmoOMQGnmp17SA6itgmwm7Js=
 			</data>
 			<key>hash2</key>
 			<data>
-			93g/rBPknYgJmKizEBwAsOQEAt74ydV+uo8Zm0lVxPI=
+			PCtPhWN3/6wGb53YMJxisVwdWK+eRYPbwPm7ER15jOM=
 			</data>
 		</dict>
 		<key>Headers/MTRGMediationNativeAdBanner.h</key>
@@ -696,33 +696,44 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			mYIcHe1bEnWSNOuKgM7FBzpC6Ek=
+			ukJobW/c8sOHqAXcHnxcOGRfyoE=
 			</data>
 			<key>hash2</key>
 			<data>
-			7FG1BnBUcSZwkcQK02R8tER+G/Ms5dVawJEK0+Vf54E=
+			ejab41UQHv0g6dGrtx30iL5Hkycr2Uq2v2lEGb6frS8=
+			</data>
+		</dict>
+		<key>Headers/MTRGMediationNativeAdConfigProtocol.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			FeiNDVQ9i9xk7i+2AQ+1UzlVIME=
+			</data>
+			<key>hash2</key>
+			<data>
+			K79lSmRYrQn3uuf8GmG8dWVZjqIbzJr5NPEXKMdmM40=
 			</data>
 		</dict>
 		<key>Headers/MTRGMediationNativeAdMediaDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			dX/Rp8vx3Tn9qkdp8Bgr085hAAo=
+			XaHliMmEcOdNxsrfvs5MOwfEihw=
 			</data>
 			<key>hash2</key>
 			<data>
-			weqOug7r+d+EXGDeivrsqnbeQ3Rpi631zij5QZ5O/eQ=
+			GqfdaoLnnQ9IzRXpD0a5GuaHwzxKRQmMGHWgEjBpKSA=
 			</data>
 		</dict>
 		<key>Headers/MTRGMediationNativeBannerAdAdapter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			u3VoIjqPcsElw64TOoFXql8Woys=
+			AawCtAZQWqOps1mEQ5087r1hM94=
 			</data>
 			<key>hash2</key>
 			<data>
-			NCrgDSr6QepwDCKeGMeDXdy+m7r73tCpU/TLBNRMA3A=
+			hSwIlcXTigu67/PvMm7lrfjF5ofGd+Ib6RNwfA1Lr7c=
 			</data>
 		</dict>
 		<key>Headers/MTRGMediationNativeBannerAdChoicesOptionDelegate.h</key>
@@ -740,88 +751,55 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			amWaaTO7S5KyvOSkCrs5Y8mqNfA=
+			COaKHRdMFN76VasDGYwKSP7ZgC8=
 			</data>
 			<key>hash2</key>
 			<data>
-			kg45okaIiC3LMG5oD+JjWDLnInVLirEnXN4wK2lsT/M=
+			/LtmK2mIgKrGrIQhT7463iY2gZ9SDD8ZtPiSrRbz6Qs=
 			</data>
 		</dict>
 		<key>Headers/MTRGMediationNativeBannerAdMediaDelegate.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			VXP6PBfJ/hohydtKcBn8VO3d2ns=
+			aU7+rKLeJcYYtKilw18xBJSIAfw=
 			</data>
 			<key>hash2</key>
 			<data>
-			eHgJBHEbNRIDIt941W7XhVKAJ6o6C0P+Oh0v82+qEwU=
+			eTq2Y5ONXG8BUDB4QsFdbrvU22Z2bpTR1cmOuBVZRMo=
 			</data>
 		</dict>
 		<key>Headers/MTRGMediationRewardedAdAdapter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			i6wgNnyXToGQ5jxviB3RPXwbz7c=
+			XbHV0/VPzByvfUb1DpV6XBjcilI=
 			</data>
 			<key>hash2</key>
 			<data>
-			983jukZ0/waLJHvKlTROXo3mri5gOyOnj1TnEA0O/14=
+			rqzWraJNXi88aw/LrrfvCYVL0aTn+bP832lklYsJ7ko=
 			</data>
 		</dict>
 		<key>Headers/MTRGMediationStandardAdAdapter.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			tmY6f/vvGPZhs6Lt94JPhYv0k2A=
+			DttOzKYpuBJJpBrdq5gtFipFXaI=
 			</data>
 			<key>hash2</key>
 			<data>
-			isvUzNn31SRyEp3ePTQc9KJFEVnHy2tLCxCbdxBdjIw=
-			</data>
-		</dict>
-		<key>Headers/MTRGMenu.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			g9cumFiHwwOKZVAm2KZpILtssYY=
-			</data>
-			<key>hash2</key>
-			<data>
-			qQi+tFrLV532goX5y1DKmF3bKSVP/NBYXhUSGGWja3I=
-			</data>
-		</dict>
-		<key>Headers/MTRGMenuAction.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			iSU+NcEdIeQYH5tkc18SmYTBPi0=
-			</data>
-			<key>hash2</key>
-			<data>
-			LloBDvXGl4xh0KPb//gMAfuuGwJuzwSzfkoht7HgYT4=
-			</data>
-		</dict>
-		<key>Headers/MTRGMenuFactory.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			tUd3lQA3SobaKvM/evYzXXVFD24=
-			</data>
-			<key>hash2</key>
-			<data>
-			jFjY6XRPtcjuBn0se/7ikMs6PpEROTJZf/qu0thwmJM=
+			atWhZZX2Phd62spKp/vHw2tW44zSgeJt/2E8bOmsVu8=
 			</data>
 		</dict>
 		<key>Headers/MTRGNativeAd.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			HCoUau2TzD0dN+g4zzJv7C/N+Zw=
+			GX+eBDKPfxnLoy76cAsUbpYsTc0=
 			</data>
 			<key>hash2</key>
 			<data>
-			4qwnKnk+teyhDe/b/ssGWuZJg9hfe9OfO509fvHOooQ=
+			Zyi9j3Id+NT5lMPQUTdCQbJ3VOTQ9jhig3tfi1Tzot4=
 			</data>
 		</dict>
 		<key>Headers/MTRGNativeAdChoicesOptionDelegate.h</key>
@@ -839,22 +817,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Q5DePxCmqroGvJDM5Cc5L4rQTBs=
+			SFGHhvgmEtWESIRExTujZ9oAuxI=
 			</data>
 			<key>hash2</key>
 			<data>
-			kh6CRu+E6wK6baPKyPzRJ1aBgFfadPpd6kN9+wX5MBM=
+			Ug4M0ZcdIfKyfdkCKO9q0obloSxKkPkmNx+LCl0zHO0=
 			</data>
 		</dict>
 		<key>Headers/MTRGNativeAdLoader.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			U9iJfOCYkl4niND9l52tUSc4Bkg=
+			A7Ol7duygNJXlFoWwY7jGqKaa/g=
 			</data>
 			<key>hash2</key>
 			<data>
-			1zNq5N9T/PGvR7sRosysZ/O9pHCuzvnlcNl/+Kq/az0=
+			kQSAOI09n2+TSUvMFzHl6NOT+L5v7En5MyPpkvOS/Sw=
 			</data>
 		</dict>
 		<key>Headers/MTRGNativeAdProtocol.h</key>
@@ -916,22 +894,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			+9PYbZYBJm3NDfSe6XWWBOxyX1k=
+			5gOrsYaiu+CX0nMnySR1UNSs/Pc=
 			</data>
 			<key>hash2</key>
 			<data>
-			OoJtyuUgMIbS5JmWGK2b0Ldf9s9RsOZzkwPRRWCIQWU=
+			cB1dItNceCKiadQ7R7lyo7MjI34tTY1eCuNt0asUy5c=
 			</data>
 		</dict>
 		<key>Headers/MTRGNativeBannerAd.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			nWU20XvcZ6GnzgMdKRzEzfLql0o=
+			TyWU4zMz2Z7NXT1Vxgse/09NeBU=
 			</data>
 			<key>hash2</key>
 			<data>
-			IuTz8vRp/J4/wXquMFwaTGUC4uqTTM7I8fQ0lpW9fb4=
+			v1s8yRnsl+vMNj03xYsVczarV2E7otvknQgdKE8HySE=
 			</data>
 		</dict>
 		<key>Headers/MTRGNativeBannerAdChoicesOptionDelegate.h</key>
@@ -949,11 +927,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			QZXlk/1DIZDIHnGUzZGXp7zT3Fc=
+			Zm7/sbTdUUyQiwAjXyYbIEJocf0=
 			</data>
 			<key>hash2</key>
 			<data>
-			khXNJeWPWBu5d1vjaPFCMFhp6Bs16W8I+HI6C3L8sBo=
+			w557wpVsfAHygTO6wJsXQiQT7RLUWz7H2RAGN6yy/JM=
 			</data>
 		</dict>
 		<key>Headers/MTRGNativeBannerAdView.h</key>
@@ -971,11 +949,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			zDBITvIPauC6zS4PJYazKfzABs0=
+			DGE9452HroVyhtOd2V0/F6GSKnM=
 			</data>
 			<key>hash2</key>
 			<data>
-			gLHQTp/t5k1mu/ayp8YI1aYrJp7r34WHin0EtKwUNX0=
+			Zyj77Qw9jjepoWAWZxJQjOczr86ayRKI3d5A5WciTgY=
 			</data>
 		</dict>
 		<key>Headers/MTRGNativePromoBanner.h</key>
@@ -1026,11 +1004,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bLMMKv7/VrPsqtz4ZPgsKlKzY2g=
+			3lPLWuK87exgdwg8v1nAFDE3mzc=
 			</data>
 			<key>hash2</key>
 			<data>
-			JTgcdX1lyzRsdGTonr5/uXpARJGFwU/GRJ0IWkB8Oaw=
+			PScrNBwbdaecwCXn/q3pQ2jHxb1gDqMRGPH+6w/TG/E=
+			</data>
+		</dict>
+		<key>Headers/MTRGPrivacyProtocol.h</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			luH2kvbmwTmZKxz/I/eM1NbcBuw=
+			</data>
+			<key>hash2</key>
+			<data>
+			XZEDyIUovC2JjgDtKlbzfezOznZK6G+3GkLmg36dkY8=
 			</data>
 		</dict>
 		<key>Headers/MTRGPromoCardCollectionView.h</key>
@@ -1048,22 +1037,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			cS4HUt2nxOOahKzzk5VifIQBTeA=
+			VgfRsZWVQFHU00OaUBAIY7bgL6I=
 			</data>
 			<key>hash2</key>
 			<data>
-			U+hr8jrduKtzUtwi18HfAFaSBaWNo1iimxV18y33YFU=
+			Io/lz5kbiLVzhmeNk/dd/iVcK++8R7wdgEmvmJhETpY=
 			</data>
 		</dict>
 		<key>Headers/MTRGPromoCardViewProtocol.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			JfrIUFSyUXLS0mulgSQE9si8cgs=
+			9itOh+bgx90G1WrWgkVKjktbGrs=
 			</data>
 			<key>hash2</key>
 			<data>
-			yd+FQ1451pMULAB1GnUDco0plk7vo6jso29y+fd5sTE=
+			LiIdnsG3ozOjIy5SONFArEWUwagN0jCbXyfeC94BgM4=
 			</data>
 		</dict>
 		<key>Headers/MTRGReward.h</key>
@@ -1081,11 +1070,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			AFOZ9OcZJ0j4feBAUwQOBjETr/A=
+			V4EsL7JpiZvHGS39+XDT2uLJfQk=
 			</data>
 			<key>hash2</key>
 			<data>
-			KwEsieK37xCtMnBvzp6idvDd4Bq2dQ+i4Zants8z5Dw=
+			vkutRjNjmAjXjFjTZCi1bngRF2kubsf9L6h6aq87o94=
 			</data>
 		</dict>
 		<key>Headers/MTRGShareButtonData.h</key>
@@ -1136,143 +1125,154 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			bIIV1S6Re9f+o9JGJWAcdMXTcwE=
+			EOJ5m246mwpDrpkA+ryvQS2k1Cs=
 			</data>
 			<key>hash2</key>
 			<data>
-			mF2VyY/MOdpcrooHsw0Up13XshoyDn2XH3C3BYkbbCw=
+			DxZoL84jOTEzr1OHZe4CSlE8OL54obcA4+GMyLfixuY=
 			</data>
 		</dict>
 		<key>Headers/MyTargetSDK.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			bnsX6DyPnXdRzLkFf8yRoxCqUgE=
+			nU3/1ui2XHL2veJhrBpPf5BIbII=
 			</data>
 			<key>hash2</key>
 			<data>
-			WepZX6c94u266yWBmQC3K+tw+AlpGQEmXs3Pv2DOb+I=
+			Ddb8nnvURmXDtof3OgL4Mnur1BtWHz8tzCZ1WR0PrTI=
 			</data>
 		</dict>
 		<key>Modules/MyTargetSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			rlKkdRW9q9lvYDeIyudZKgUSm3M=
+			/pd0WdwM8dqt+CvF3VGw7WvoJV8=
 			</data>
 			<key>hash2</key>
 			<data>
-			COd/x19q7iORMhgE/QdVchgPzwu3Qv/RUF3Msd4YBHU=
+			com6yibyC6M8IV0DrULJ88Ae2XAVwPAScuab6YcW+FQ=
 			</data>
 		</dict>
 		<key>Modules/MyTargetSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0v4ADp3dXdCweEEmugucJkm6/Q8=
+			dfk92AKykii/mCJIGPukl0gGtEQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Tc34XLQN5dKAp0q1vyff2y/UvW7I2waXyf3RPEaTYPQ=
+			PbZxZHD3hOoZcxiCKfGObD01r+uGdHvPJu4mp4kzzZc=
 			</data>
 		</dict>
 		<key>Modules/MyTargetSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			znEyIABfrJob2XBiFyB6x6BdoqM=
+			FJyLLloxrnbrFT9Hesk2+Yg2NtM=
 			</data>
 			<key>hash2</key>
 			<data>
-			l/U3dFIl0iUF5MmUuZOosbZWrDTMQ/TAaz1DozsYcfk=
+			U/gmFshNDUHDKjhlYuKkvIQfoYKPPmT19Yr07r0DhlA=
 			</data>
 		</dict>
 		<key>Modules/MyTargetSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			0v4ADp3dXdCweEEmugucJkm6/Q8=
+			dfk92AKykii/mCJIGPukl0gGtEQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Tc34XLQN5dKAp0q1vyff2y/UvW7I2waXyf3RPEaTYPQ=
+			PbZxZHD3hOoZcxiCKfGObD01r+uGdHvPJu4mp4kzzZc=
 			</data>
 		</dict>
 		<key>Modules/MyTargetSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			N3DJK8MOGtCQPzXmDULG/NQo1fA=
+			uZXY+XP6thCVi/SEcxLvnkL5OPI=
 			</data>
 			<key>hash2</key>
 			<data>
-			mox5PtgjQySEI03O/b19qWnO0gY1zx2bGSpGwXR4aAg=
+			oSmFq7eJ/vzJDSmBOE8vsGZFam4jqlU95qJ9Wmrhvx0=
 			</data>
 		</dict>
 		<key>Modules/MyTargetSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			rlKkdRW9q9lvYDeIyudZKgUSm3M=
+			/pd0WdwM8dqt+CvF3VGw7WvoJV8=
 			</data>
 			<key>hash2</key>
 			<data>
-			COd/x19q7iORMhgE/QdVchgPzwu3Qv/RUF3Msd4YBHU=
+			com6yibyC6M8IV0DrULJ88Ae2XAVwPAScuab6YcW+FQ=
 			</data>
 		</dict>
 		<key>Modules/MyTargetSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QeZSoi2DNHxM7ewvvd7l0c3SAsE=
+			gOBDMU8T1bMmbTEQZYvbV97umZ4=
 			</data>
 			<key>hash2</key>
 			<data>
-			gcC9RBO346ITosShCipeUsn8xiA1fwVlNvcdP80yRjE=
+			g24s1BYlyLWtIgrgMfkFGY/XSrcYMzp1OnvpVuoarPs=
 			</data>
 		</dict>
 		<key>Modules/MyTargetSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			IW4dUN1be6jsH22UFBepbL6ct04=
+			TxlmWZUTh23jvobbh3MqDhkT0nU=
 			</data>
 			<key>hash2</key>
 			<data>
-			xzOgFUkZn/iX1Ux6YeOsCmjUlN7dDyX0vcCErLrVE9U=
+			qsOdj10i1c2JGGgqnjetrRxo1cC7bG8QnzFLEW9d/E4=
 			</data>
 		</dict>
 		<key>Modules/MyTargetSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			QeZSoi2DNHxM7ewvvd7l0c3SAsE=
+			gOBDMU8T1bMmbTEQZYvbV97umZ4=
 			</data>
 			<key>hash2</key>
 			<data>
-			gcC9RBO346ITosShCipeUsn8xiA1fwVlNvcdP80yRjE=
+			g24s1BYlyLWtIgrgMfkFGY/XSrcYMzp1OnvpVuoarPs=
 			</data>
 		</dict>
 		<key>Modules/MyTargetSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			gmmgK1HhE8ukaR1kQZiwR7hFdIg=
+			OBOUGa/CepeRGuAQHQ1a7/fEjDw=
 			</data>
 			<key>hash2</key>
 			<data>
-			CFrX+iettZekoyeRyFX4V8Z8tR2VPq7BwAmE5CwAlWI=
+			jbU3evEMHR/y1NSGWRcHUKWQNI0dqu98DHKr24m/j5I=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			k0FSjgYUimM0vgRlUVIlkJxYYZU=
+			B3HtGhJaZciFEPm25zZF1lEZV5c=
 			</data>
 			<key>hash2</key>
 			<data>
-			fiLMCHnV3hfAmkzcK6DI1YDcJkhcTz9zHm8TZD1WqPs=
+			4nTwMhjd8/S0BlQFARkInq87pZDvsHLfYJSslEHR5hI=
+			</data>
+		</dict>
+		<key>PrivacyInfo.xcprivacy</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			SIjlq4QVhTfPwUMNfyqmsLzCcr0=
+			</data>
+			<key>hash2</key>
+			<data>
+			RChvJ9vc3PHJtCYjCHCmloDlOErUHygMMC+a8n9CLTQ=
 			</data>
 		</dict>
 		<key>PrivateHeaders/MTRGAutoInit.h</key>
