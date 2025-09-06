@@ -1,6 +1,6 @@
 //
 //  MTRGNativePromoBanner.h
-//  myTargetSDK 5.21.9
+//  myTargetSDK 5.33.0
 //
 // Created by Timur on 2/12/18.
 // Copyright (c) 2018 Mail.Ru Group. All rights reserved.
@@ -9,6 +9,7 @@
 #import <MyTargetSDK/MTRGNativeBanner.h>
 
 @class MTRGNativePromoCard;
+@class MTRGNativePromoCollage;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -41,6 +42,21 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion Flag determines video existing for the banner.
  */
 @property(nonatomic, readonly) BOOL hasVideo;
+
+/**
+ @discussion Identifier for the banner.
+ */
+@property(nonatomic, readonly) NSString *bannerId;
+
+/**
+ @discussion Video duration for the banner.
+ */
+@property(nonatomic, readonly) NSTimeInterval videoDuration;
+
+/**
+ @discussion Collage data for the banner.
+ */
+@property(nonatomic, readonly, nullable) MTRGNativePromoCollage *collage;
 
 @end
 

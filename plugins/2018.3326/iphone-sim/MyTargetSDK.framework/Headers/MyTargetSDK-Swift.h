@@ -281,6 +281,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import ObjectiveC;
 #endif
 
+#import <MyTargetSDK/MyTargetSDK.h>
+
 #endif
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
@@ -364,6 +366,22 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MTRGBannerMe
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+@class MTRGImageData;
+@class UIColor;
+
+SWIFT_CLASS_NAMED("CallToActionData")
+@interface MTRGCallToActionData : NSObject
+@property (nonatomic, readonly, strong) MTRGImageData * _Nullable icon;
+@property (nonatomic, readonly, copy) NSString * _Nonnull buttonText;
+@property (nonatomic, readonly, copy) NSString * _Nullable additionalText;
+@property (nonatomic, readonly, strong) UIColor * _Nullable buttonColor;
+@property (nonatomic, readonly, strong) UIColor * _Nullable buttonTextColor;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 enum MTRGDisclaimerType : NSInteger;
 
 /// Ads disclaimer
@@ -386,9 +404,29 @@ typedef SWIFT_ENUM_NAMED(NSInteger, MTRGDisclaimerType, "DisclaimerType", open) 
   MTRGDisclaimerTypeDrugs = 8,
   MTRGDisclaimerTypeDietary = 9,
   MTRGDisclaimerTypeDeclaration = 10,
+  MTRGDisclaimerTypeCredits = 11,
 };
 
 
+
+
+@class MTRGPostViewData;
+
+SWIFT_PROTOCOL_NAMED("InstreamAdPostViewPlayer")
+@protocol MTRGInstreamAdPostViewPlayer
+/// Calls on post view show.
+/// \param postViewData PostViewData.
+///
+- (void)showWithPostViewData:(MTRGPostViewData * _Nonnull)postViewData;
+/// Calls on item show.
+/// \param progress time in seconds.
+///
+/// \param duration time in seconds.
+///
+- (void)updateWithProgress:(NSTimeInterval)progress duration:(NSTimeInterval)duration;
+/// Calls on post view hide.
+- (void)hide;
+@end
 
 @class MTRGInstreamAdVideoMotionData;
 @class NSNumber;
@@ -491,6 +529,16 @@ SWIFT_PROTOCOL_NAMED("InstreamAdVideoMotionPlayerDelegate")
 
 
 
+@protocol MTRGWebFormDelegate;
+
+@interface MTRGBaseAd (SWIFT_EXTENSION(MyTargetSDK))
+/// Delegate for the web form of the ad.
+@property (nonatomic, weak) id <MTRGWebFormDelegate> _Nullable webFormDelegate;
+@end
+
+
+
+
 
 
 
@@ -513,7 +561,6 @@ typedef SWIFT_ENUM(NSInteger, MTRGLogMessageType, open) {
 /// The critical log message type.
   MTRGLogMessageTypeCritical = 3,
 };
-
 
 
 /// A <code>MTRGLogger</code> is an implementation of a logger.
@@ -587,7 +634,8 @@ SWIFT_CLASS("_TtC11MyTargetSDK14MTRGMenuAction")
 @interface MTRGMenuAction : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull title;
 @property (nonatomic, readonly) enum MTRGMenuActionStyle style;
-- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title style:(enum MTRGMenuActionStyle)style handler:(void (^ _Nullable)(void))handler OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly, copy) NSString * _Nullable alias;
+- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title style:(enum MTRGMenuActionStyle)style alias:(NSString * _Nullable)alias handler:(void (^ _Nullable)(void))handler OBJC_DESIGNATED_INITIALIZER;
 - (void)handleClick;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -595,7 +643,10 @@ SWIFT_CLASS("_TtC11MyTargetSDK14MTRGMenuAction")
 
 typedef SWIFT_ENUM(NSInteger, MTRGMenuActionStyle, open) {
   MTRGMenuActionStyleDefault = 0,
-  MTRGMenuActionStyleCancel = 1,
+  MTRGMenuActionStyleCopy = 1,
+  MTRGMenuActionStyleHide = 2,
+  MTRGMenuActionStyleComplain = 3,
+  MTRGMenuActionStyleCancel = 4,
 };
 
 
@@ -604,7 +655,6 @@ SWIFT_PROTOCOL("_TtP11MyTargetSDK15MTRGMenuFactory_")
 @protocol MTRGMenuFactory
 - (id <MTRGMenu> _Nonnull)menu SWIFT_WARN_UNUSED_RESULT;
 @end
-
 
 
 
@@ -636,6 +686,71 @@ SWIFT_CLASS("_TtC11MyTargetSDK11MTRGVersion")
 
 
 
+@class MTRGNativePromoCollageMedia;
+
+/// Promo collage
+SWIFT_CLASS_NAMED("NativePromoCollage")
+@interface MTRGNativePromoCollage : NSObject
+/// Collage media items
+@property (nonatomic, readonly, copy) NSArray<MTRGNativePromoCollageMedia *> * _Nonnull collageMedia;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Collage image
+SWIFT_CLASS_NAMED("NativePromoCollageImage")
+@interface MTRGNativePromoCollageImage : NSObject
+/// Image data
+@property (nonatomic, readonly, strong) MTRGImageData * _Nonnull imageData;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class MTRGNativePromoCollageVideo;
+
+/// Collage media
+SWIFT_CLASS_NAMED("NativePromoCollageMedia")
+@interface MTRGNativePromoCollageMedia : NSObject
+/// Is video
+@property (nonatomic, readonly) BOOL isVideo;
+/// Returns collage video
+- (MTRGNativePromoCollageVideo * _Nullable)getVideo SWIFT_WARN_UNUSED_RESULT;
+/// Returns collage image
+- (MTRGNativePromoCollageImage * _Nullable)getImage SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class MTRGVideoData;
+
+/// Collage video
+SWIFT_CLASS_NAMED("NativePromoCollageVideo")
+@interface MTRGNativePromoCollageVideo : NSObject
+/// Video preview
+@property (nonatomic, readonly, strong) MTRGImageData * _Nullable preview;
+/// Video duration
+@property (nonatomic, readonly) NSTimeInterval duration;
+/// Video file
+@property (nonatomic, readonly, strong) MTRGVideoData * _Nullable video;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+
+SWIFT_CLASS_NAMED("PostViewData")
+@interface MTRGPostViewData : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nullable text;
+@property (nonatomic, readonly) double duration;
+@property (nonatomic, readonly, strong) UIColor * _Nullable overlayViewColor;
+@property (nonatomic, readonly, strong) MTRGImageData * _Nullable backgroundImage;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS_NAMED("ShoppableAdsItem")
 @interface MTRGShoppableAdsItem : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull url;
@@ -655,6 +770,237 @@ SWIFT_CLASS_NAMED("ShoppableAdsItem")
 
 
 
+
+
+
+/// Protocol for interacting with the web form.
+SWIFT_PROTOCOL_NAMED("WebForm")
+@protocol MTRGWebForm
+/// Reload the web form.
+- (void)reload;
+/// Dismiss the web form.
+- (void)dismiss;
+@end
+
+@class MTRGWebFormSetViewSettings;
+@class MTRGWebFormGetUserInfoResult;
+
+/// The methods for responding to the web form appearance, dismissal, text copying and handling post messages.
+SWIFT_PROTOCOL_NAMED("WebFormDelegate")
+@protocol MTRGWebFormDelegate
+/// Indicates that the web form will present.
+/// \param webForm The web form that’s about to appear.
+///
+- (void)webFormWillPresent:(id <MTRGWebForm> _Nonnull)webForm;
+/// Indicates that the web form dismissed.
+/// \param webForm The web form that dismissed.
+///
+- (void)webFormDidDismiss:(id <MTRGWebForm> _Nonnull)webForm;
+/// Show an error view for specific error.
+/// If <code>nil</code> then the sdk shows its own error view.
+/// \param webForm The web form that shows the error view.
+///
+/// \param error The error for which the error view is being shown.
+///
+///
+/// returns:
+/// An error view or <code>nil</code>.
+- (UIView * _Nullable)webForm:(id <MTRGWebForm> _Nonnull)webForm showErrorViewForError:(NSError * _Nonnull)error SWIFT_WARN_UNUSED_RESULT;
+/// Indicates that the web form copied the text.
+/// \param webForm The web form that copied the text.
+///
+/// \param text The text that was copied.
+///
+- (void)webForm:(id <MTRGWebForm> _Nonnull)webForm didCopyText:(NSString * _Nonnull)text;
+/// Indicates that the web form handled the set view settings post message.
+/// \param webForm The web form that handle the post message.
+///
+/// \param setViewSettings The post message that was handled.
+///
+- (void)webForm:(id <MTRGWebForm> _Nonnull)webForm didHandleSetViewSettings:(MTRGWebFormSetViewSettings * _Nonnull)setViewSettings;
+@optional
+/// Indicates that the web form handled the get user info post message.
+/// \param webForm The web form that handle the post message.
+///
+///
+/// returns:
+/// The result of getting user info.
+- (MTRGWebFormGetUserInfoResult * _Nonnull)webFormDidHandleGetUserInfo:(id <MTRGWebForm> _Nonnull)webForm SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use webForm(_:didHandleGetUserInfoWith:) instead.");
+/// Indicates that the web form handled the get user info post message.
+/// \param webForm The web form that handle the post message.
+///
+/// \param resultHandler The completion block to call with the results of getting user info.
+///
+- (void)webForm:(id <MTRGWebForm> _Nonnull)webForm didHandleGetUserInfoWithResultHandler:(void (^ _Nonnull)(MTRGWebFormGetUserInfoResult * _Nonnull))resultHandler;
+@end
+
+@class NSDate;
+@class MTRGWebFormGetUserInfoResultContact;
+
+/// Post message result that signals that user data has been received.
+SWIFT_CLASS_NAMED("WebFormGetUserInfoResult")
+@interface MTRGWebFormGetUserInfoResult : NSObject
+/// User’s first name.
+@property (nonatomic, readonly, copy) NSString * _Nullable firstName;
+/// User’s family name.
+@property (nonatomic, readonly, copy) NSString * _Nullable lastName;
+/// User’s birth date.
+@property (nonatomic, readonly, copy) NSDate * _Nullable birthday;
+/// User’s city.
+@property (nonatomic, readonly, copy) NSString * _Nullable city;
+/// User’s country.
+@property (nonatomic, readonly, copy) NSString * _Nullable country;
+/// User’s contact.
+@property (nonatomic, readonly, strong) MTRGWebFormGetUserInfoResultContact * _Nullable contact;
+/// User’s vk id.
+@property (nonatomic, readonly, strong) NSNumber * _Nullable vkId;
+/// Creates a new post message result.
+/// \param firstName User’s first name.
+///
+/// \param lastName User’s family name.
+///
+/// \param birthday User’s birth date.
+///
+/// \param city User’s city.
+///
+/// \param country User’s country.
+///
+/// \param contact User’s contact.
+///
+/// \param vkId User’s vkId.
+///
+- (nonnull instancetype)initWithFirstName:(NSString * _Nullable)firstName lastName:(NSString * _Nullable)lastName birthday:(NSDate * _Nullable)birthday city:(NSString * _Nullable)city country:(NSString * _Nullable)country contact:(MTRGWebFormGetUserInfoResultContact * _Nullable)contact vkId:(NSInteger)vkId;
+/// Creates a new post message result.
+/// \param firstName User’s first name.
+///
+/// \param lastName User’s family name.
+///
+/// \param birthday User’s birth date.
+///
+/// \param city User’s city.
+///
+/// \param country User’s country.
+///
+/// \param contact User’s contact.
+///
+- (nonnull instancetype)initWithFirstName:(NSString * _Nullable)firstName lastName:(NSString * _Nullable)lastName birthday:(NSDate * _Nullable)birthday city:(NSString * _Nullable)city country:(NSString * _Nullable)country contact:(MTRGWebFormGetUserInfoResultContact * _Nullable)contact;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@interface MTRGWebFormGetUserInfoResult (SWIFT_EXTENSION(MyTargetSDK))
+@end
+
+@class MTRGWebFormGetUserInfoResultDecodingParameters;
+
+/// The user’s contact.
+SWIFT_CLASS_NAMED("Contact")
+@interface MTRGWebFormGetUserInfoResultContact : NSObject
+/// User’s phone.
+@property (nonatomic, readonly, copy) NSString * _Nullable phone;
+/// Sign in case the phone is masked.
+@property (nonatomic, readonly, copy) NSString * _Nullable phoneSign;
+/// User’s email.
+@property (nonatomic, readonly, copy) NSString * _Nullable email;
+/// Sign in case the email is masked.
+@property (nonatomic, readonly, copy) NSString * _Nullable emailSign;
+/// Parameters for decoding phone and/or email.
+@property (nonatomic, readonly, strong) MTRGWebFormGetUserInfoResultDecodingParameters * _Nullable decodingParameters;
+/// Creates a new contract with phone and/or email.
+/// \param phone The contact phone number (e.g. 79991234567).
+///
+/// \param email The contact email.
+///
+- (nonnull instancetype)initWithPhone:(NSString * _Nullable)phone email:(NSString * _Nullable)email OBJC_DESIGNATED_INITIALIZER;
+/// Creates a new contract with a masked phone.
+/// A masked phone needs a sign and parameters to decode.
+/// \param maskedPhone The masked phone.
+///
+/// \param maskedPhoneSign The sign of the masked phone.
+///
+/// \param decodingParameters The decoding parameters.
+///
+- (nonnull instancetype)initWithMaskedPhone:(NSString * _Nonnull)maskedPhone maskedPhoneSign:(NSString * _Nonnull)maskedPhoneSign decodingParameters:(MTRGWebFormGetUserInfoResultDecodingParameters * _Nonnull)decodingParameters OBJC_DESIGNATED_INITIALIZER;
+/// Creates a new contract with a masked email.
+/// A masked email needs a sign and parameters to decode.
+/// \param maskedEmail The masked email.
+///
+/// \param maskedEmailSign The sign of the masked email.
+///
+/// \param decodingParameters The decoding parameters.
+///
+- (nonnull instancetype)initWithMaskedEmail:(NSString * _Nonnull)maskedEmail maskedEmailSign:(NSString * _Nonnull)maskedEmailSign decodingParameters:(MTRGWebFormGetUserInfoResultDecodingParameters * _Nonnull)decodingParameters OBJC_DESIGNATED_INITIALIZER;
+/// Creates a new contract with a masked phone and a masked email.
+/// A masked phone and a masked email need a sign and parameters to decode.
+/// \param maskedPhone The masked phone.
+///
+/// \param maskedPhoneSign The sign of the masked phone.
+///
+/// \param maskedEmail The masked email.
+///
+/// \param maskedEmailSign The sign of the masked email.
+///
+/// \param decodingParameters The decoding parameters.
+///
+- (nonnull instancetype)initWithMaskedPhone:(NSString * _Nonnull)maskedPhone maskedPhoneSign:(NSString * _Nonnull)maskedPhoneSign maskedEmail:(NSString * _Nonnull)maskedEmail maskedEmailSign:(NSString * _Nonnull)maskedEmailSign decodingParameters:(MTRGWebFormGetUserInfoResultDecodingParameters * _Nonnull)decodingParameters OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Parameters for decoding phone and/or email.
+SWIFT_CLASS_NAMED("DecodingParameters")
+@interface MTRGWebFormGetUserInfoResultDecodingParameters : NSObject
+/// Access token.
+@property (nonatomic, readonly, copy) NSString * _Nullable accessToken;
+/// User id.
+@property (nonatomic, readonly, copy) NSString * _Nullable userID;
+/// App id.
+@property (nonatomic, readonly, copy) NSString * _Nonnull appID;
+/// Create a new decoding parameters.
+/// \param accessToken Access token.
+///
+/// \param userID User id.
+///
+/// \param appID App id.
+///
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken userID:(NSString * _Nullable)userID appID:(NSString * _Nonnull)appID OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum MTRGWebFormStatusBarStyle : NSInteger;
+
+/// Post message that sets the theme for the icons in the status bar and the color of the status bar.
+SWIFT_CLASS_NAMED("WebFormSetViewSettings")
+@interface MTRGWebFormSetViewSettings : NSObject
+/// The theme of the status bar icons.
+@property (nonatomic, readonly) enum MTRGWebFormStatusBarStyle statusBarStyle;
+/// The action bar color.
+@property (nonatomic, readonly, strong) UIColor * _Nullable actionBarColor;
+/// The navigation bar color.
+@property (nonatomic, readonly, strong) UIColor * _Nullable navigationBarColor;
+/// Creates a new post message.
+/// \param statusBarStyle The theme of the status bar icons.
+///
+/// \param actionBarColor The action bar color.
+///
+/// \param navigationBarColor The navigation bar color.
+///
+- (nonnull instancetype)initWithStatusBarStyle:(enum MTRGWebFormStatusBarStyle)statusBarStyle actionBarColor:(UIColor * _Nullable)actionBarColor navigationBarColor:(UIColor * _Nullable)navigationBarColor OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The style of the device’s status bar.
+typedef SWIFT_ENUM_NAMED(NSInteger, MTRGWebFormStatusBarStyle, "WebFormStatusBarStyle", open) {
+/// Light.
+  MTRGWebFormStatusBarStyleLight = 0,
+/// Dark.
+  MTRGWebFormStatusBarStyleDark = 1,
+};
 
 #endif
 #if __has_attribute(external_source_symbol)
@@ -947,6 +1293,8 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @import ObjectiveC;
 #endif
 
+#import <MyTargetSDK/MyTargetSDK.h>
+
 #endif
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
@@ -1030,6 +1378,22 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, strong) MTRGBannerMe
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
 
+
+@class MTRGImageData;
+@class UIColor;
+
+SWIFT_CLASS_NAMED("CallToActionData")
+@interface MTRGCallToActionData : NSObject
+@property (nonatomic, readonly, strong) MTRGImageData * _Nullable icon;
+@property (nonatomic, readonly, copy) NSString * _Nonnull buttonText;
+@property (nonatomic, readonly, copy) NSString * _Nullable additionalText;
+@property (nonatomic, readonly, strong) UIColor * _Nullable buttonColor;
+@property (nonatomic, readonly, strong) UIColor * _Nullable buttonTextColor;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 enum MTRGDisclaimerType : NSInteger;
 
 /// Ads disclaimer
@@ -1052,9 +1416,29 @@ typedef SWIFT_ENUM_NAMED(NSInteger, MTRGDisclaimerType, "DisclaimerType", open) 
   MTRGDisclaimerTypeDrugs = 8,
   MTRGDisclaimerTypeDietary = 9,
   MTRGDisclaimerTypeDeclaration = 10,
+  MTRGDisclaimerTypeCredits = 11,
 };
 
 
+
+
+@class MTRGPostViewData;
+
+SWIFT_PROTOCOL_NAMED("InstreamAdPostViewPlayer")
+@protocol MTRGInstreamAdPostViewPlayer
+/// Calls on post view show.
+/// \param postViewData PostViewData.
+///
+- (void)showWithPostViewData:(MTRGPostViewData * _Nonnull)postViewData;
+/// Calls on item show.
+/// \param progress time in seconds.
+///
+/// \param duration time in seconds.
+///
+- (void)updateWithProgress:(NSTimeInterval)progress duration:(NSTimeInterval)duration;
+/// Calls on post view hide.
+- (void)hide;
+@end
 
 @class MTRGInstreamAdVideoMotionData;
 @class NSNumber;
@@ -1157,6 +1541,16 @@ SWIFT_PROTOCOL_NAMED("InstreamAdVideoMotionPlayerDelegate")
 
 
 
+@protocol MTRGWebFormDelegate;
+
+@interface MTRGBaseAd (SWIFT_EXTENSION(MyTargetSDK))
+/// Delegate for the web form of the ad.
+@property (nonatomic, weak) id <MTRGWebFormDelegate> _Nullable webFormDelegate;
+@end
+
+
+
+
 
 
 
@@ -1179,7 +1573,6 @@ typedef SWIFT_ENUM(NSInteger, MTRGLogMessageType, open) {
 /// The critical log message type.
   MTRGLogMessageTypeCritical = 3,
 };
-
 
 
 /// A <code>MTRGLogger</code> is an implementation of a logger.
@@ -1253,7 +1646,8 @@ SWIFT_CLASS("_TtC11MyTargetSDK14MTRGMenuAction")
 @interface MTRGMenuAction : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull title;
 @property (nonatomic, readonly) enum MTRGMenuActionStyle style;
-- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title style:(enum MTRGMenuActionStyle)style handler:(void (^ _Nullable)(void))handler OBJC_DESIGNATED_INITIALIZER;
+@property (nonatomic, readonly, copy) NSString * _Nullable alias;
+- (nonnull instancetype)initWithTitle:(NSString * _Nonnull)title style:(enum MTRGMenuActionStyle)style alias:(NSString * _Nullable)alias handler:(void (^ _Nullable)(void))handler OBJC_DESIGNATED_INITIALIZER;
 - (void)handleClick;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
@@ -1261,7 +1655,10 @@ SWIFT_CLASS("_TtC11MyTargetSDK14MTRGMenuAction")
 
 typedef SWIFT_ENUM(NSInteger, MTRGMenuActionStyle, open) {
   MTRGMenuActionStyleDefault = 0,
-  MTRGMenuActionStyleCancel = 1,
+  MTRGMenuActionStyleCopy = 1,
+  MTRGMenuActionStyleHide = 2,
+  MTRGMenuActionStyleComplain = 3,
+  MTRGMenuActionStyleCancel = 4,
 };
 
 
@@ -1270,7 +1667,6 @@ SWIFT_PROTOCOL("_TtP11MyTargetSDK15MTRGMenuFactory_")
 @protocol MTRGMenuFactory
 - (id <MTRGMenu> _Nonnull)menu SWIFT_WARN_UNUSED_RESULT;
 @end
-
 
 
 
@@ -1302,6 +1698,71 @@ SWIFT_CLASS("_TtC11MyTargetSDK11MTRGVersion")
 
 
 
+@class MTRGNativePromoCollageMedia;
+
+/// Promo collage
+SWIFT_CLASS_NAMED("NativePromoCollage")
+@interface MTRGNativePromoCollage : NSObject
+/// Collage media items
+@property (nonatomic, readonly, copy) NSArray<MTRGNativePromoCollageMedia *> * _Nonnull collageMedia;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Collage image
+SWIFT_CLASS_NAMED("NativePromoCollageImage")
+@interface MTRGNativePromoCollageImage : NSObject
+/// Image data
+@property (nonatomic, readonly, strong) MTRGImageData * _Nonnull imageData;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class MTRGNativePromoCollageVideo;
+
+/// Collage media
+SWIFT_CLASS_NAMED("NativePromoCollageMedia")
+@interface MTRGNativePromoCollageMedia : NSObject
+/// Is video
+@property (nonatomic, readonly) BOOL isVideo;
+/// Returns collage video
+- (MTRGNativePromoCollageVideo * _Nullable)getVideo SWIFT_WARN_UNUSED_RESULT;
+/// Returns collage image
+- (MTRGNativePromoCollageImage * _Nullable)getImage SWIFT_WARN_UNUSED_RESULT;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+@class MTRGVideoData;
+
+/// Collage video
+SWIFT_CLASS_NAMED("NativePromoCollageVideo")
+@interface MTRGNativePromoCollageVideo : NSObject
+/// Video preview
+@property (nonatomic, readonly, strong) MTRGImageData * _Nullable preview;
+/// Video duration
+@property (nonatomic, readonly) NSTimeInterval duration;
+/// Video file
+@property (nonatomic, readonly, strong) MTRGVideoData * _Nullable video;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+
+SWIFT_CLASS_NAMED("PostViewData")
+@interface MTRGPostViewData : NSObject
+@property (nonatomic, readonly, copy) NSString * _Nullable text;
+@property (nonatomic, readonly) double duration;
+@property (nonatomic, readonly, strong) UIColor * _Nullable overlayViewColor;
+@property (nonatomic, readonly, strong) MTRGImageData * _Nullable backgroundImage;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS_NAMED("ShoppableAdsItem")
 @interface MTRGShoppableAdsItem : NSObject
 @property (nonatomic, readonly, copy) NSString * _Nonnull url;
@@ -1321,6 +1782,237 @@ SWIFT_CLASS_NAMED("ShoppableAdsItem")
 
 
 
+
+
+
+/// Protocol for interacting with the web form.
+SWIFT_PROTOCOL_NAMED("WebForm")
+@protocol MTRGWebForm
+/// Reload the web form.
+- (void)reload;
+/// Dismiss the web form.
+- (void)dismiss;
+@end
+
+@class MTRGWebFormSetViewSettings;
+@class MTRGWebFormGetUserInfoResult;
+
+/// The methods for responding to the web form appearance, dismissal, text copying and handling post messages.
+SWIFT_PROTOCOL_NAMED("WebFormDelegate")
+@protocol MTRGWebFormDelegate
+/// Indicates that the web form will present.
+/// \param webForm The web form that’s about to appear.
+///
+- (void)webFormWillPresent:(id <MTRGWebForm> _Nonnull)webForm;
+/// Indicates that the web form dismissed.
+/// \param webForm The web form that dismissed.
+///
+- (void)webFormDidDismiss:(id <MTRGWebForm> _Nonnull)webForm;
+/// Show an error view for specific error.
+/// If <code>nil</code> then the sdk shows its own error view.
+/// \param webForm The web form that shows the error view.
+///
+/// \param error The error for which the error view is being shown.
+///
+///
+/// returns:
+/// An error view or <code>nil</code>.
+- (UIView * _Nullable)webForm:(id <MTRGWebForm> _Nonnull)webForm showErrorViewForError:(NSError * _Nonnull)error SWIFT_WARN_UNUSED_RESULT;
+/// Indicates that the web form copied the text.
+/// \param webForm The web form that copied the text.
+///
+/// \param text The text that was copied.
+///
+- (void)webForm:(id <MTRGWebForm> _Nonnull)webForm didCopyText:(NSString * _Nonnull)text;
+/// Indicates that the web form handled the set view settings post message.
+/// \param webForm The web form that handle the post message.
+///
+/// \param setViewSettings The post message that was handled.
+///
+- (void)webForm:(id <MTRGWebForm> _Nonnull)webForm didHandleSetViewSettings:(MTRGWebFormSetViewSettings * _Nonnull)setViewSettings;
+@optional
+/// Indicates that the web form handled the get user info post message.
+/// \param webForm The web form that handle the post message.
+///
+///
+/// returns:
+/// The result of getting user info.
+- (MTRGWebFormGetUserInfoResult * _Nonnull)webFormDidHandleGetUserInfo:(id <MTRGWebForm> _Nonnull)webForm SWIFT_WARN_UNUSED_RESULT SWIFT_DEPRECATED_MSG("Use webForm(_:didHandleGetUserInfoWith:) instead.");
+/// Indicates that the web form handled the get user info post message.
+/// \param webForm The web form that handle the post message.
+///
+/// \param resultHandler The completion block to call with the results of getting user info.
+///
+- (void)webForm:(id <MTRGWebForm> _Nonnull)webForm didHandleGetUserInfoWithResultHandler:(void (^ _Nonnull)(MTRGWebFormGetUserInfoResult * _Nonnull))resultHandler;
+@end
+
+@class NSDate;
+@class MTRGWebFormGetUserInfoResultContact;
+
+/// Post message result that signals that user data has been received.
+SWIFT_CLASS_NAMED("WebFormGetUserInfoResult")
+@interface MTRGWebFormGetUserInfoResult : NSObject
+/// User’s first name.
+@property (nonatomic, readonly, copy) NSString * _Nullable firstName;
+/// User’s family name.
+@property (nonatomic, readonly, copy) NSString * _Nullable lastName;
+/// User’s birth date.
+@property (nonatomic, readonly, copy) NSDate * _Nullable birthday;
+/// User’s city.
+@property (nonatomic, readonly, copy) NSString * _Nullable city;
+/// User’s country.
+@property (nonatomic, readonly, copy) NSString * _Nullable country;
+/// User’s contact.
+@property (nonatomic, readonly, strong) MTRGWebFormGetUserInfoResultContact * _Nullable contact;
+/// User’s vk id.
+@property (nonatomic, readonly, strong) NSNumber * _Nullable vkId;
+/// Creates a new post message result.
+/// \param firstName User’s first name.
+///
+/// \param lastName User’s family name.
+///
+/// \param birthday User’s birth date.
+///
+/// \param city User’s city.
+///
+/// \param country User’s country.
+///
+/// \param contact User’s contact.
+///
+/// \param vkId User’s vkId.
+///
+- (nonnull instancetype)initWithFirstName:(NSString * _Nullable)firstName lastName:(NSString * _Nullable)lastName birthday:(NSDate * _Nullable)birthday city:(NSString * _Nullable)city country:(NSString * _Nullable)country contact:(MTRGWebFormGetUserInfoResultContact * _Nullable)contact vkId:(NSInteger)vkId;
+/// Creates a new post message result.
+/// \param firstName User’s first name.
+///
+/// \param lastName User’s family name.
+///
+/// \param birthday User’s birth date.
+///
+/// \param city User’s city.
+///
+/// \param country User’s country.
+///
+/// \param contact User’s contact.
+///
+- (nonnull instancetype)initWithFirstName:(NSString * _Nullable)firstName lastName:(NSString * _Nullable)lastName birthday:(NSDate * _Nullable)birthday city:(NSString * _Nullable)city country:(NSString * _Nullable)country contact:(MTRGWebFormGetUserInfoResultContact * _Nullable)contact;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+@interface MTRGWebFormGetUserInfoResult (SWIFT_EXTENSION(MyTargetSDK))
+@end
+
+@class MTRGWebFormGetUserInfoResultDecodingParameters;
+
+/// The user’s contact.
+SWIFT_CLASS_NAMED("Contact")
+@interface MTRGWebFormGetUserInfoResultContact : NSObject
+/// User’s phone.
+@property (nonatomic, readonly, copy) NSString * _Nullable phone;
+/// Sign in case the phone is masked.
+@property (nonatomic, readonly, copy) NSString * _Nullable phoneSign;
+/// User’s email.
+@property (nonatomic, readonly, copy) NSString * _Nullable email;
+/// Sign in case the email is masked.
+@property (nonatomic, readonly, copy) NSString * _Nullable emailSign;
+/// Parameters for decoding phone and/or email.
+@property (nonatomic, readonly, strong) MTRGWebFormGetUserInfoResultDecodingParameters * _Nullable decodingParameters;
+/// Creates a new contract with phone and/or email.
+/// \param phone The contact phone number (e.g. 79991234567).
+///
+/// \param email The contact email.
+///
+- (nonnull instancetype)initWithPhone:(NSString * _Nullable)phone email:(NSString * _Nullable)email OBJC_DESIGNATED_INITIALIZER;
+/// Creates a new contract with a masked phone.
+/// A masked phone needs a sign and parameters to decode.
+/// \param maskedPhone The masked phone.
+///
+/// \param maskedPhoneSign The sign of the masked phone.
+///
+/// \param decodingParameters The decoding parameters.
+///
+- (nonnull instancetype)initWithMaskedPhone:(NSString * _Nonnull)maskedPhone maskedPhoneSign:(NSString * _Nonnull)maskedPhoneSign decodingParameters:(MTRGWebFormGetUserInfoResultDecodingParameters * _Nonnull)decodingParameters OBJC_DESIGNATED_INITIALIZER;
+/// Creates a new contract with a masked email.
+/// A masked email needs a sign and parameters to decode.
+/// \param maskedEmail The masked email.
+///
+/// \param maskedEmailSign The sign of the masked email.
+///
+/// \param decodingParameters The decoding parameters.
+///
+- (nonnull instancetype)initWithMaskedEmail:(NSString * _Nonnull)maskedEmail maskedEmailSign:(NSString * _Nonnull)maskedEmailSign decodingParameters:(MTRGWebFormGetUserInfoResultDecodingParameters * _Nonnull)decodingParameters OBJC_DESIGNATED_INITIALIZER;
+/// Creates a new contract with a masked phone and a masked email.
+/// A masked phone and a masked email need a sign and parameters to decode.
+/// \param maskedPhone The masked phone.
+///
+/// \param maskedPhoneSign The sign of the masked phone.
+///
+/// \param maskedEmail The masked email.
+///
+/// \param maskedEmailSign The sign of the masked email.
+///
+/// \param decodingParameters The decoding parameters.
+///
+- (nonnull instancetype)initWithMaskedPhone:(NSString * _Nonnull)maskedPhone maskedPhoneSign:(NSString * _Nonnull)maskedPhoneSign maskedEmail:(NSString * _Nonnull)maskedEmail maskedEmailSign:(NSString * _Nonnull)maskedEmailSign decodingParameters:(MTRGWebFormGetUserInfoResultDecodingParameters * _Nonnull)decodingParameters OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// Parameters for decoding phone and/or email.
+SWIFT_CLASS_NAMED("DecodingParameters")
+@interface MTRGWebFormGetUserInfoResultDecodingParameters : NSObject
+/// Access token.
+@property (nonatomic, readonly, copy) NSString * _Nullable accessToken;
+/// User id.
+@property (nonatomic, readonly, copy) NSString * _Nullable userID;
+/// App id.
+@property (nonatomic, readonly, copy) NSString * _Nonnull appID;
+/// Create a new decoding parameters.
+/// \param accessToken Access token.
+///
+/// \param userID User id.
+///
+/// \param appID App id.
+///
+- (nonnull instancetype)initWithAccessToken:(NSString * _Nullable)accessToken userID:(NSString * _Nullable)userID appID:(NSString * _Nonnull)appID OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+enum MTRGWebFormStatusBarStyle : NSInteger;
+
+/// Post message that sets the theme for the icons in the status bar and the color of the status bar.
+SWIFT_CLASS_NAMED("WebFormSetViewSettings")
+@interface MTRGWebFormSetViewSettings : NSObject
+/// The theme of the status bar icons.
+@property (nonatomic, readonly) enum MTRGWebFormStatusBarStyle statusBarStyle;
+/// The action bar color.
+@property (nonatomic, readonly, strong) UIColor * _Nullable actionBarColor;
+/// The navigation bar color.
+@property (nonatomic, readonly, strong) UIColor * _Nullable navigationBarColor;
+/// Creates a new post message.
+/// \param statusBarStyle The theme of the status bar icons.
+///
+/// \param actionBarColor The action bar color.
+///
+/// \param navigationBarColor The navigation bar color.
+///
+- (nonnull instancetype)initWithStatusBarStyle:(enum MTRGWebFormStatusBarStyle)statusBarStyle actionBarColor:(UIColor * _Nullable)actionBarColor navigationBarColor:(UIColor * _Nullable)navigationBarColor OBJC_DESIGNATED_INITIALIZER;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+/// The style of the device’s status bar.
+typedef SWIFT_ENUM_NAMED(NSInteger, MTRGWebFormStatusBarStyle, "WebFormStatusBarStyle", open) {
+/// Light.
+  MTRGWebFormStatusBarStyleLight = 0,
+/// Dark.
+  MTRGWebFormStatusBarStyleDark = 1,
+};
 
 #endif
 #if __has_attribute(external_source_symbol)

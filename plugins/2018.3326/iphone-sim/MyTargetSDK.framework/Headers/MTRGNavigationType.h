@@ -1,6 +1,6 @@
 //
 //  MTRGNavigationType.h
-//  myTargetSDK 5.21.9
+//  myTargetSDK 5.33.0
 //
 //  Created by Anton Bulankin on 30.05.16.
 //  Copyright © 2016 Mail.ru. All rights reserved.
@@ -9,5 +9,6 @@
 typedef enum
 {
 	MTRGNavigationTypeWeb,
-	MTRGNavigationTypeStore
+	MTRGNavigationTypeStore,
+    MTRGNavigationTypeWebForm
 } MTRGNavigationType;

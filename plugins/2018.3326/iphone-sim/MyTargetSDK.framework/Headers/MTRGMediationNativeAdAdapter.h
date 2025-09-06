@@ -1,6 +1,6 @@
 //
 //  MTRGMediationNativeAdAdapter.h
-//  myTargetSDK 5.21.9
+//  myTargetSDK 5.33.0
 //
 // Copyright (c) 2019 Mail.Ru Group. All rights reserved.
 //
@@ -47,13 +47,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onAdShowWithAdapter:(id <MTRGMediationNativeAdAdapter>)adapter;
 
 /**
- @discussion Call on click by the ad.
- 
- @param adapter Current adapter.
- */
-- (void)onAdClickWithAdapter:(id <MTRGMediationNativeAdAdapter>)adapter;
-
-/**
  @discussion Calls on modal show the ad.
  
  @param adapter Current adapter.
@@ -96,7 +89,6 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)onVideoCompleteWithAdapter:(id <MTRGMediationNativeAdAdapter>)adapter;
 
 @optional
-
 /**
  @discussion Calls if there is no ad.
 
@@ -105,6 +97,27 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)onNoAdWithReason:(NSString *)reason
 				 adapter:(id <MTRGMediationNativeAdAdapter>)adapter __attribute__((deprecated("use onLoadFailed method instead.")));
+
+/**
+ @discussion Calls when video is ready to play.
+
+ @param adapter Current adapter.
+ */
+- (void)onVideoReadyWithAdapter:(id <MTRGMediationNativeAdAdapter>)adapter;
+
+/**
+ @discussion Call on click by the ad.
+ 
+ @param adapter Current adapter.
+ */
+- (void)onAdClickWithAdapter:(id <MTRGMediationNativeAdAdapter>)adapter __attribute__((deprecated("use onAdClickWithClickedView: adapter: instead.")));
+
+/**
+ @discussion Call on click by the ad.
+ @param clickedView View that was clicked.
+ @param adapter Current adapter.
+ */
+- (void)onAdClickWithClickedView:(nullable UIView *)clickedView adapter:(id <MTRGMediationNativeAdAdapter>)adapter;
 
 @end
 
@@ -173,6 +186,13 @@ NS_ASSUME_NONNULL_BEGIN
  @param adChoicesOptionDelegate AdChoicesOptionDelegate of the adapter.
  */
 - (void)setAdChoicesOptionDelegate:(nullable id <MTRGMediationNativeAdChoicesOptionDelegate>)adChoicesOptionDelegate;
+
+/**
+ @discussion Method to handle  click. Used when the user controls click himself. For private use only.
+
+ @param isCta This parameter shows click on cta button.
+ */
+- (void)handleClick:(BOOL)isCta;
 
 @end
 
