@@ -1,3 +1,7 @@
+android.defaultConfig {
+    minSdkVersion Math.max(minSdkVersion?.apiLevel ?: 15, 23)
+}
+ext["minSdkVersion"] = Math.max(ext.find("minSdkVersion")?:15, 23)
 dependencies {
     implementation 'com.appodeal.ads.sdk.networks:my_target:3.9.0.0'
 }
