@@ -5,7 +5,7 @@ local metadata =
 		format = 'staticLibrary',
 		staticLibs = { 'APDMyTargetAdapter'},
 		frameworks = { 'MyTargetSDK'},
-		frameworksOptional = {},
+		frameworksOptional = {"Network"},
 		usesSwift =true
 	},
 }
