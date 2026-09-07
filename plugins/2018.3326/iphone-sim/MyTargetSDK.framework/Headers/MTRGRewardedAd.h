@@ -1,6 +1,6 @@
 //
 //  MTRGRewardedAd.h
-//  myTargetSDK 5.33.0
+//  myTargetSDK 5.43.0
 //
 //  Created by Andrey Seredkin on 05.08.2020.
 //  Copyright © 2020 Mail.ru Group. All rights reserved.
@@ -86,6 +86,51 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)onLeaveApplicationWithRewardedAd:(MTRGRewardedAd *)rewardedAd;
 
+/**
+ @discussion Calls when impression is tracked.
+ 
+ @param rewardedAd Current ad.
+ */
+- (void)onTrackImpressionWithRewardedAd:(MTRGRewardedAd *)rewardedAd;
+
+@end
+
+/**
+ @discussion Rewarded ad video delegate protocol.
+ */
+@protocol MTRGRewardedAdVideoDelegate <NSObject>
+
+/**
+ @discussion Calls on video volume changes with current ad.
+
+ @param volume Current volume of video.
+ @param rewardedAd Current ad.
+ */
+- (void)onVideoVolumeChangeWithVolume:(NSTimeInterval)volume rewardedAd:(MTRGRewardedAd *)rewardedAd;
+
+@optional
+
+/**
+ @discussion Calls when video starts with current ad.
+
+ @param rewardedAd Current ad.
+ */
+- (void)onVideoStartWithRewardedAd:(MTRGRewardedAd *)rewardedAd;
+
+/**
+ @discussion Calls when video pauses with current ad.
+
+ @param rewardedAd Current ad.
+ */
+- (void)onVideoPauseWithRewardedAd:(MTRGRewardedAd *)rewardedAd;
+
+/**
+ @discussion Calls when video ad is resume with current ad.
+ 
+ @param rewardedAd Current ad.
+ */
+- (void)onVideoResumeWithRewardedAd:(MTRGRewardedAd *)rewardedAd;
+
 @end
 
 /**
@@ -97,6 +142,11 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion Delegate for the ad. Must conforms MTRGRewardedAdDelegate protocol.
  */
 @property(nonatomic, weak, nullable) id <MTRGRewardedAdDelegate> delegate;
+
+/**
+ @discussion Delegate for the video of the ad. Must conforms MTRGInterstitialAdVideoDelegate protocol.
+ */
+@property(nonatomic, weak, nullable) id <MTRGRewardedAdVideoDelegate> videoDelegate;
 
 /**
  @discussion Static constructor. Creates instance with slot identifier.

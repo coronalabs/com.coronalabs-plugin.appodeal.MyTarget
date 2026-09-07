@@ -1,6 +1,6 @@
 //
 //  MTRGNativeAd.h
-//  myTargetSDK 5.33.0
+//  myTargetSDK 5.43.0
 //
 // Created by Timur on 2/1/18.
 // Copyright (c) 2018 Mail.Ru Group. All rights reserved.
@@ -11,6 +11,7 @@
 #import <MyTargetSDK/MTRGNativeAdDelegate.h>
 #import <MyTargetSDK/MTRGNativeAdVideoDelegate.h>
 #import <MyTargetSDK/MTRGNativeAdMediaDelegate.h>
+#import <MyTargetSDK/MTRGNativeAdWebViewDelegate.h>
 #import <MyTargetSDK/MTRGNativeAdVideoPlayer.h>
 
 @class MTRGNativeAd;
@@ -55,6 +56,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, weak, nullable) id <MTRGNativeAdMediaDelegate> mediaDelegate;
 
 /**
+ @discussion Delegate for the webView of the ad. Must conforms MTRGNativeAdWebViewDelegate protocol.
+ */
+@property(nonatomic, weak, nullable) id <MTRGNativeAdWebViewDelegate> webViewDelegate;
+
+/**
  @discussion Delegate for the AdChoices options. Must conforms MTRGNativeAdChoicesOptionDelegate protocol.
  See MTRGNativeAdChoicesOptionDelegate.h
  */
@@ -80,6 +86,11 @@ NS_ASSUME_NONNULL_BEGIN
  The getter returns the same value that was set.
  */
 @property(nonatomic) NSUInteger videoQuality;
+
+/**
+ @discussion State of html ad in WebView.
+ */
+@property(nonatomic, readonly) BOOL isWebViewLoaded;
 
 /**
  @discussion Static constructor. Create instance of the class with slot identifier.
@@ -178,9 +189,22 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)setInternalObject:(id)object;
 
 /**
+ @discussion Method to set custom params. For private use only.
+ */
+- (void)setAdsLightPixelParams:(nullable NSDictionary<NSString *, NSString *> *)params type:(NSString *)type;
+
+/**
  @discussion Method to get native player.
  */
 - (nullable id <MTRGNativeAdVideoPlayer>)getVideoPlayer;
+
+/**
+ @discussion Method to set the timeout interval, in seconds, for loading HTML5 ads in the native WebView.
+
+ @param timeout Timeout interval in seconds. Valid range is 0–30. Other values are ignored.
+                Passing 0 resets the timeout to the default value (3 seconds).
+ */
+- (void)setNativeHtmlLoadingTimeout:(NSTimeInterval)timeout;
 
 @end
 

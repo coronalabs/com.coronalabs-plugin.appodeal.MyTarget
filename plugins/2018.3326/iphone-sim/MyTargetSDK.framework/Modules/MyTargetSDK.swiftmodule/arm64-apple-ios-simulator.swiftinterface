@@ -1,11 +1,13 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)
-// swift-module-flags: -target arm64-apple-ios12.4-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-bare-slash-regex -module-name MyTargetSDK
+// swift-compiler-version: Apple Swift version 6.1.2 effective-5.10 (swiftlang-6.1.2.1.2 clang-1700.0.13.5)
+// swift-module-flags: -target arm64-apple-ios14.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -enable-experimental-feature DebugDescriptionMacro -enable-bare-slash-regex -module-name MyTargetSDK
+// swift-module-flags-ignorable: -no-verify-emitted-module-interface -interface-compiler-version 6.1.2
 import AVFAudio
 import AVFoundation
 import AdSupport
 import CoreTelephony.CTCarrier
 import CoreTelephony.CTTelephonyNetworkInfo
+import CommonCrypto
 import CoreTelephony
 import Foundation
 @_exported import MyTargetSDK
@@ -28,6 +30,7 @@ import os
 @objc public protocol MTRGMenu {
   @objc(addMenuAction:) func add(menuAction action: MyTargetSDK.MTRGMenuAction)
   @objc(presentInViewController:sourceView:) func present(in viewController: UIKit.UIViewController, sourceView: UIKit.UIView?)
+  @objc(addAboutCompany:) optional func add(aboutCompany: Swift.String?)
 }
 @objc public enum MTRGMenuActionStyle : Swift.Int {
   case `default`
@@ -68,9 +71,28 @@ import os
   @objc final public let buttonTextColor: UIKit.UIColor?
   @objc deinit
 }
+@objc(MTRGAudioSectionInfo) final public class AudioSectionInfo : ObjectiveC.NSObject {
+  @objc final public let name: Swift.String
+  @objc final public let hasMediaContent: Swift.Bool
+  @objc final public let bannersCount: Swift.UInt
+  @objc public init(name: Swift.String, hasMediaContent: Swift.Bool, bannersCount: Swift.UInt)
+  @objc override final public var debugDescription: Swift.String {
+    @objc get
+  }
+  @objc deinit
+}
 @objc(MTRGWebForm) public protocol WebForm {
   @objc func reload()
   @objc func dismiss()
+}
+@objc(MTRGAdBannerInfo) final public class AdBannerInfo : ObjectiveC.NSObject {
+  @objc final public let bannerId: Swift.String
+  @objc final public let impressionId: Swift.String?
+  @objc public init(bannerId: Swift.String, impressionId: Swift.String?)
+  @objc override final public var description: Swift.String {
+    @objc get
+  }
+  @objc deinit
 }
 @objc(MTRGWebFormDelegate) public protocol WebFormDelegate {
   @objc func webFormWillPresent(_ webForm: any MyTargetSDK.WebForm)
@@ -88,12 +110,22 @@ extension MyTargetSDK.MTRGBaseAd {
     @objc set
   }
 }
+@_hasMissingDesignatedInitializers @objc(MTRGLoudnessMetadata) final public class LoudnessMetadata : ObjectiveC.NSObject {
+  @objc final public let integratedLufs: Swift.Float
+  @objc final public let truePeak: Swift.Float
+  @objc deinit
+}
 @_hasMissingDesignatedInitializers @objc(MTRGPostViewData) final public class PostViewData : ObjectiveC.NSObject {
   @objc final public let text: Swift.String?
   @objc final public let duration: Swift.Double
   @objc final public let overlayViewColor: UIKit.UIColor?
   @objc final public let backgroundImage: MyTargetSDK.MTRGImageData?
   @objc deinit
+}
+@objc(MTRGInstreamAdVideoMotionPlayerV2) public protocol InstreamAdVideoMotionPlayerV2 {
+  @objc weak var delegate: (any MyTargetSDK.InstreamAdVideoMotionPlayerDelegate)? { get set }
+  @objc var adPlayerView: UIKit.UIView? { get }
+  @objc func play(_ videoMotionBanner: MyTargetSDK.InstreamAdVideoMotionBanner)
 }
 @_hasMissingDesignatedInitializers @objcMembers @objc(MTRGWebFormGetUserInfoResult) final public class WebFormGetUserInfoResult : ObjectiveC.NSObject {
   @objc final public let firstName: Swift.String?
@@ -184,13 +216,28 @@ extension MyTargetSDK.WebFormGetUserInfoResult {
   @objc public static func initSdk()
   @objc public static func setDebugMode(_ enabled: Swift.Bool)
   @objc public static func getBidderToken() -> Swift.String
+  @objc public static func diskCacheMaxSize() -> Swift.UInt
+  @objc public static func setDiskCacheMaxSize(_ size: Swift.UInt)
+  @objc public static func diskCacheTTL() -> Foundation.TimeInterval
+  @objc public static func setDiskCacheTTL(_ ttl: Foundation.TimeInterval)
+  @objc public static func clearDiskCache(completion: @escaping () -> Swift.Void = { })
   @objc override dynamic public init()
   @objc deinit
 }
 @objc(MTRGDisclaimer) final public class Disclaimer : ObjectiveC.NSObject {
   @objc final public let text: Swift.String
   @objc final public let type: MyTargetSDK.DisclaimerType
-  @objc public init(text: Swift.String, type: MyTargetSDK.DisclaimerType)
+  @objc final public let alias: Swift.String
+  @objc final public let percent: Foundation.NSNumber
+  @objc final public let portraitImage: MyTargetSDK.DisclaimerImage?
+  @objc final public let landscapeImage: MyTargetSDK.DisclaimerImage?
+  @objc public init(text: Swift.String, type: MyTargetSDK.DisclaimerType, alias: Swift.String, percent: Foundation.NSNumber, portraitImage: MyTargetSDK.DisclaimerImage? = nil, landscapeImage: MyTargetSDK.DisclaimerImage? = nil)
+  @objc deinit
+}
+@objc(MTRGDisclaimerImage) final public class DisclaimerImage : ObjectiveC.NSObject {
+  @objc final public let minHeight: Foundation.NSNumber?
+  @objc final public let imageData: MyTargetSDK.MTRGImageData
+  @objc public init(minHeight: Foundation.NSNumber?, imageData: MyTargetSDK.MTRGImageData)
   @objc deinit
 }
 @objc(MTRGInstreamAdPostViewPlayer) public protocol InstreamAdPostViewPlayer {
@@ -251,7 +298,7 @@ extension MyTargetSDK.MTRGCachePolicy : Swift.Codable {
   @objc deinit
 }
 @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers final public class MTRGVersion : ObjectiveC.NSObject {
-  @objc final public class func currentVersion() -> Swift.String
+  @objc public static func currentVersion() -> Swift.String
   @objc deinit
 }
 @objc(MTRGAdLoadingError) public enum AdLoadingError : Swift.Int, Foundation.LocalizedError {
@@ -308,6 +355,8 @@ extension MyTargetSDK.MTRGCachePolicy : Swift.Hashable {
   case dietary = 9
   case declaration = 10
   case credits = 11
+  case bankruptcy = 12
+  case energetics = 13
   public init?(rawValue: Swift.Int)
   public typealias RawValue = Swift.Int
   public var rawValue: Swift.Int {

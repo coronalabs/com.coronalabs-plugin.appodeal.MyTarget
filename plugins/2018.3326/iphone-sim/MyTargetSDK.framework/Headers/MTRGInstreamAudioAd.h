@@ -1,6 +1,6 @@
 //
 //  MTRGInstreamAudioAd.h
-//  myTargetSDK 5.33.0
+//  myTargetSDK 5.43.0
 //
 // Created by Timur on 5/25/18.
 // Copyright (c) 2018 Mail.Ru Group. All rights reserved.
@@ -8,11 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <MyTargetSDK/MTRGBaseAd.h>
+#import <MyTargetSDK/MTRGCachePolicy.h>
 
 @protocol MTRGMenuFactory;
 @class MTRGInstreamAudioAd;
 @class MTRGShareButtonData;
 @class MTRGInstreamAdCompanionBanner;
+@class MTRGLoudnessMetadata;
+@class MTRGAudioSectionInfo;
 
 @protocol MTRGInstreamAudioAdPlayer;
 
@@ -82,6 +85,11 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion If banner has AdChoices.
  */
 @property(nonatomic, readonly) BOOL hasAdChoices;
+
+/**
+ @discussion Loudness Metadata.
+ */
+@property(nonatomic, readonly, nullable) MTRGLoudnessMetadata *loudnessMetadata;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -215,6 +223,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, readonly, copy) NSArray<NSNumber *> *midpoints;
 
 /**
+ @discussion Preroll section info.
+ */
+@property(nonatomic, readonly, nullable) MTRGAudioSectionInfo *prerollSectionInfo;
+
+/**
  @discussion Timeout for loading ad.
  */
 @property(nonatomic) NSUInteger loadingTimeout;
@@ -223,6 +236,11 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion Volume of instream audio ad.
  */
 @property(nonatomic) float volume;
+
+/**
+ @discussion Cache policy for the audio ad.
+ */
+@property(nonatomic) MTRGCachePolicy cachePolicy;
 
 /**
  @discussion Static constructor. Creates instance of the class with slot identifier.
@@ -255,6 +273,16 @@ NS_ASSUME_NONNULL_BEGIN
  @param menuFactory Menu factory.
  */
 - (instancetype)initWithSlotId:(NSUInteger)slotId menuFactory:(id<MTRGMenuFactory>)menuFactory;
+
+/**
+ @discussion Creates instream audio ad with json source and menu factory.
+
+ @param jsonSource JSON source.
+ @param menuFactory Menu factory.
+
+ @return Instance of the class.
+ */
+- (instancetype)initWithJsonSource:(NSString *)jsonSource menuFactory:(nullable id<MTRGMenuFactory>)menuFactory;
 
 /**
  @discussion Load the ad.

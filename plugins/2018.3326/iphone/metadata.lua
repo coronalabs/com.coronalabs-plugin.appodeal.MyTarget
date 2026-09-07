@@ -3,10 +3,10 @@ local metadata =
 	plugin =
 	{
 		format = 'staticLibrary',
-		staticLibs = { 'APDMyTargetAdapter'},
-		frameworks = { 'MyTargetSDK'},
-		frameworksOptional = {"Network"},
-		usesSwift =true
+		staticLibs = { 'AppodealMyTargetAdapter' },
+		frameworks = { 'MyTargetSDK' },
+		frameworksOptional = { 'Network' },
+		usesSwift = true,
 	},
 }
 

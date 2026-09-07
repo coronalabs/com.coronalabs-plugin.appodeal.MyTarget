@@ -1,6 +1,6 @@
 //
 //  MTRGBaseInterstitialAd.h
-//  myTargetSDK 5.33.0
+//  myTargetSDK 5.43.0
 //
 //  Created by Andrey Seredkin on 31.07.2020.
 //  Copyright © 2020 Mail.ru Group. All rights reserved.
@@ -30,6 +30,26 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion Priority of the source.
  */
 @property(nonatomic, readonly) float adSourcePriority;
+
+/**
+ @discussion Parameter sets quality of playing video.
+ */
+@property(nonatomic) NSUInteger videoQuality;
+
+/**
+ @discussion Delay before close button becomes available.
+ */
+@property(nonatomic, readonly) double closeDelay;
+
+/**
+ @discussion Indicates whether video starts muted.
+ */
+@property(nonatomic, readonly) BOOL autoMute;
+
+/**
+ @discussion Indicates whether video starts playing automatically.
+ */
+@property(nonatomic, readonly) BOOL autoPlay;
 
 + (instancetype)new NS_UNAVAILABLE;
 

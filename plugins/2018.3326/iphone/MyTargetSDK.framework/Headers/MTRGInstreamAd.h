@@ -1,6 +1,6 @@
 //
 //  MTRGInstreamAd.h
-//  myTargetSDK 5.33.0
+//  myTargetSDK 5.43.0
 //
 // Created by Timur on 5/4/18.
 // Copyright (c) 2018 Mail.Ru Group. All rights reserved.
@@ -17,9 +17,13 @@
 @class MTRGShoppableAdsItem;
 @class MTRGInstreamAdVideoMotionBanner;
 @protocol MTRGInstreamAdVideoMotionPlayer;
+@protocol MTRGInstreamAdVideoMotionPlayerV2;
 @protocol MTRGInstreamAdPostViewPlayer;
+@protocol MTRGInstreamAdVideoDelegate;
 @class MTRGCallToActionData;
 @class MTRGPostViewData;
+@class MTRGLoudnessMetadata;
+@class MTRGDisclaimer;
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -89,9 +93,19 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, readonly) NSString *advertisingLabel;
 
 /**
+ @discussion Erid.
+ */
+@property(nonatomic, readonly, nullable) NSString *erid;
+
+/**
  @discussion Disclaimer for the banner.
  */
-@property(nonatomic, readonly, nullable) NSString *disclaimer;
+@property(nonatomic, readonly, nullable) NSString *disclaimer __attribute__((deprecated("use disclaimerInfo.text instead.")));
+
+/**
+ @discussion Disclaimer info for the banner.
+ */
+@property(nonatomic, readonly, nullable) MTRGDisclaimer *disclaimerInfo;
 
 /**
  @discussion Age restrictions for the banner.
@@ -117,6 +131,11 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion Array of Instances of shoppable cards (MTRGShoppableAdsItem).
  */
 @property(nonatomic, readonly, nullable) NSArray<MTRGShoppableAdsItem *> *shoppableAdsItems;
+
+/**
+ @discussion Loudness Metadata.
+ */
+@property(nonatomic, readonly, nullable) MTRGLoudnessMetadata *loudnessMetadata;
 
 - (instancetype)init NS_UNAVAILABLE;
 
@@ -201,6 +220,14 @@ NS_ASSUME_NONNULL_BEGIN
  */
 - (void)onBannerTimeLeftChange:(NSTimeInterval)timeLeft duration:(NSTimeInterval)duration instreamAd:(MTRGInstreamAd *)instreamAd;
 
+/**
+ @discussion Calls on banner's prepare with section.
+ 
+ @param section Current section of the ad banner.
+ @param instreamAd Current instream ad.
+ @param error Section preloading completion error.
+ */
+- (void)onPrepareWithSection:(NSString *)section instreamAd:(MTRGInstreamAd *)instreamAd error:(NSError * _Nullable)error;
 
 /**
  @discussion Calls on banner's complete with section.
@@ -271,6 +298,11 @@ NS_ASSUME_NONNULL_BEGIN
 @property(nonatomic, weak, nullable) id <MTRGInstreamAdDelegate> delegate;
 
 /**
+ @discussion Delegate for the video of the ad.
+ */
+@property(nonatomic, weak, nullable) id <MTRGInstreamAdVideoDelegate> videoDelegate;
+
+/**
  @discussion Player for the ad. Conforms MTRGInstreamAdPlayer protocol.
  */
 @property(nonatomic, nullable) id <MTRGInstreamAdPlayer> player;
@@ -278,7 +310,11 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  @discussion Player for VideoMotion banner. Conforms MTRGVideoMotionPlayer protocol.
  */
-@property(nonatomic, nullable) id <MTRGInstreamAdVideoMotionPlayer> videoMotionPlayer;
+@property(nonatomic, nullable) id <MTRGInstreamAdVideoMotionPlayer> videoMotionPlayer __attribute__((deprecated("use \'videoMotionPlayerV2\' property instead.")));
+/**
+ @discussion Player for VideoMotion banner. Conforms MTRGVideoMotionPlayerV2 protocol.
+ */
+@property(nonatomic, nullable) id <MTRGInstreamAdVideoMotionPlayerV2> videoMotionPlayerV2;
 
 /**
  @discussion Player for post view. Conforms MTRGInstreamAdPostViewPlayer protocol.
@@ -371,6 +407,16 @@ NS_ASSUME_NONNULL_BEGIN
 - (instancetype)initWithSlotId:(NSUInteger)slotId menuFactory:(id<MTRGMenuFactory>)menuFactory;
 
 /**
+ @discussion Creates instream ad with json source and menu factory.
+
+ @param jsonSource JSON source.
+ @param menuFactory Menu factory.
+
+ @return Instance of the class.
+ */
+- (instancetype)initWithJsonSource:(NSString *)jsonSource menuFactory:(nullable id<MTRGMenuFactory>)menuFactory;
+
+/**
  @discussion Loads the ad.
  */
 - (void)load;
@@ -444,6 +490,13 @@ NS_ASSUME_NONNULL_BEGIN
  @discussion Starts pauseroll.
  */
 - (void)startPauseroll;
+
+/**
+ @discussion Prepare midroll at the point.
+ 
+ @param point Point to start the midroll.
+ */
+- (void)prepareMidrollWithPoint:(NSNumber *)point;
 
 /**
  @discussion Starts midroll at the point.
